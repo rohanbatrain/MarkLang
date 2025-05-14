@@ -1,5 +1,6 @@
 import frontmatter
 import requests
+import os
 
 # Global language settings
 SOURCE_LANG = "English"
@@ -14,8 +15,28 @@ TITLE_TRANSLATION_PROMPT = (
     "Maintain the tone and intent of the original title, whether it is informative, persuasive, or creative. "
     "The translation should be concise, culturally appropriate, and appealing to native speakers. "
     "\n\nTitle: \"{text}\"\n\n"
-    "Return only the translated title in {target_lang}, with no explanation or additional text. without double quotes and in a single line."
+    "Return only the translated title in {target_lang}, with no explanation or additional text. without single quotes and in a single line."
 )
+
+DESCRIPTION_TRANSLATION_PROMPT = (
+    "You are an expert translator specializing in content localization and digital media. "
+    "Translate the following blog post description from {source_lang} to {target_lang}, ensuring it sounds natural, engaging, and idiomatic in {target_lang}. "
+    "Maintain the tone and intent of the original description, whether it is informative, persuasive, or creative. "
+    "The translation should be concise, culturally appropriate, and appealing to native speakers. "
+    "\n\nDescription: \"{text}\"\n\n"
+    "Return only the translated description in {target_lang}, with no explanation or additional text. without single quotes and in a single line."
+)
+
+def replace_double_with_single_quotes(text: str) -> str:
+    return text.replace('"', "'")
+
+def replace_mixed_quotes(text: str) -> str:
+    return text.replace("'", "\"").replace("'", "\"")
+
+def clean_frontmatter_value(value):
+    # Replace "' or '" with just "
+    value = value.replace("\"'", "\"").replace("'\"", "\"")
+    return value
 
 def translate_title(
     title: str,
@@ -35,9 +56,83 @@ def translate_title(
         response = requests.post(api_url, json=payload)
         response.raise_for_status()
         data = response.json()
-        return data.get("response", "").strip("")
+        translated_text = data.get("response", "").strip("")
+        return replace_double_with_single_quotes(translated_text)
     except requests.RequestException as e:
         return f"[Error] {e}"
+
+def validate_frontmatter(file_path):
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        # Check if frontmatter starts and ends with '---'
+        if not (content.startswith("---\n") and content.endswith("\n---\n")):
+            return False
+        
+        # Parse frontmatter content
+        frontmatter_data = frontmatter.loads(content)
+        
+        # Check if all keys have values
+        for key, value in frontmatter_data.metadata.items():
+            if value is None or value == "":
+                print(f"[Error] Missing value for key: {key}")
+                return False
+        
+        return True
+    except Exception as e:
+        print(f"[Error] Validation failed: {e}")
+        return False
+
+def translate_description(
+    description: str,
+    source_lang: str = SOURCE_LANG,
+    target_lang: str = TARGET_LANG,
+    model: str = TRANSLATION_MODEL,
+    api_url: str = TRANSLATION_API_URL
+) -> str:
+    prompt = DESCRIPTION_TRANSLATION_PROMPT.format(source_lang=source_lang, target_lang=target_lang, text=description)
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "stream": False
+    }
+
+    try:
+        response = requests.post(api_url, json=payload)
+        response.raise_for_status()
+        data = response.json()
+        translated_text = data.get("response", "").strip("")
+        return replace_double_with_single_quotes(translated_text)
+    except requests.RequestException as e:
+        return f"[Error] {e}"
+
+def translate_array(
+    array: list,
+    source_lang: str = SOURCE_LANG,
+    target_lang: str = TARGET_LANG,
+    model: str = TRANSLATION_MODEL,
+    api_url: str = TRANSLATION_API_URL
+) -> list:
+    translated_array = []
+    for item in array:
+        prompt = DESCRIPTION_TRANSLATION_PROMPT.format(source_lang=source_lang, target_lang=target_lang, text=item)
+        payload = {
+            "model": model,
+            "prompt": prompt,
+            "stream": False
+        }
+
+        try:
+            response = requests.post(api_url, json=payload)
+            response.raise_for_status()
+            data = response.json()
+            translated_text = data.get("response", "").strip("")
+            translated_array.append(replace_double_with_single_quotes(translated_text))
+        except requests.RequestException as e:
+            translated_array.append(f"[Error] {e}")
+
+    return translated_array
 
 def process_markdown(file_path, output_path="output.md"):
     # Load original markdown file
@@ -51,13 +146,49 @@ def process_markdown(file_path, output_path="output.md"):
 
     translated_title = translate_title(original_title)
 
-    # Create new post with only the translated title in frontmatter and no content
-    new_metadata = {"title": translated_title}
-    new_post = frontmatter.Post(content="", **new_metadata)
+    # Extract and translate description
+    original_description = post.get("description")
+    translated_description = ""
+    if original_description:
+        translated_description = translate_description(original_description)
+
+    # Extract and translate tags
+    original_tags = post.get("tags", [])
+    translated_tags = []
+    if original_tags:
+        translated_tags = translate_array(original_tags)
+
+    # Extract and translate categories
+    original_categories = post.get("categories", [])
+    translated_categories = []
+    if original_categories:
+        translated_categories = translate_array(original_categories)
+
+    # Copy date and draft from original frontmatter
+    date = post.get("date", "")
+    draft = post.get("draft", "")
+
+    # Create new post with translated title, description, tags, categories, date, and draft in frontmatter
+    new_metadata = {
+        "title": f'"{translated_title}"',
+        "description": f'"{translated_description}"',
+        "tags": translated_tags,
+        "categories": translated_categories,
+        "date": date,
+        "draft": draft
+    }
+    new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" if not isinstance(value, list) else f"{key}: [{', '.join(value)}]" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
+    new_frontmatter = clean_frontmatter_value(new_frontmatter)
 
     # Write to output.md
     with open(output_path, "w", encoding="utf-8") as f:
-        f.write(frontmatter.dumps(new_post))
+        f.write(new_frontmatter)
+
+    # Validate the frontmatter
+    if not validate_frontmatter(output_path):
+        print("[Error] Invalid frontmatter. Deleting output file and retrying.")
+        os.remove(output_path)
+        process_markdown(file_path, output_path)
 
 # Example usage
 process_markdown("example.md")
