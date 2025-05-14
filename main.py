@@ -107,33 +107,6 @@ def translate_description(
     except requests.RequestException as e:
         return f"[Error] {e}"
 
-def translate_array(
-    array: list,
-    source_lang: str = SOURCE_LANG,
-    target_lang: str = TARGET_LANG,
-    model: str = TRANSLATION_MODEL,
-    api_url: str = TRANSLATION_API_URL
-) -> list:
-    translated_array = []
-    for item in array:
-        prompt = DESCRIPTION_TRANSLATION_PROMPT.format(source_lang=source_lang, target_lang=target_lang, text=item)
-        payload = {
-            "model": model,
-            "prompt": prompt,
-            "stream": False
-        }
-
-        try:
-            response = requests.post(api_url, json=payload)
-            response.raise_for_status()
-            data = response.json()
-            translated_text = data.get("response", "").strip("")
-            translated_array.append(replace_double_with_single_quotes(translated_text))
-        except requests.RequestException as e:
-            translated_array.append(f"[Error] {e}")
-
-    return translated_array
-
 def process_markdown(file_path, output_path="output.md"):
     # Load original markdown file
     post = frontmatter.load(file_path)
@@ -152,38 +125,24 @@ def process_markdown(file_path, output_path="output.md"):
     if original_description:
         translated_description = translate_description(original_description)
 
-    # Extract and translate tags
-    original_tags = post.get("tags", [])
-    translated_tags = []
-    if original_tags:
-        translated_tags = translate_array(original_tags)
-
-    # Extract and translate categories
-    original_categories = post.get("categories", [])
-    translated_categories = []
-    if original_categories:
-        translated_categories = translate_array(original_categories)
-
     # Copy date and draft from original frontmatter
     date = post.get("date", "")
     draft = post.get("draft", "")
 
-    # Create new post with translated title, description, tags, categories, date, and draft in frontmatter
+    # Create new post with translated title, description, date, and draft in frontmatter
     new_metadata = {
         "title": f'"{translated_title}"',
         "description": f'"{translated_description}"',
-        "tags": translated_tags,
-        "categories": translated_categories,
         "date": date,
         "draft": draft
     }
-    new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" if not isinstance(value, list) else f"{key}: [{', '.join(value)}]" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
+    new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
     new_frontmatter = clean_frontmatter_value(new_frontmatter)
 
     # Write to output.md
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(new_frontmatter)
-
+    
     # Validate the frontmatter
     if not validate_frontmatter(output_path):
         print("[Error] Invalid frontmatter. Deleting output file and retrying.")
