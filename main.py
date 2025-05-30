@@ -31,6 +31,17 @@ DESCRIPTION_TRANSLATION_PROMPT = (
     "Return only the translated description in {target_lang_full}, with no explanation or additional text. without single quotes and in a single line."
 )
 
+CONTENT_TRANSLATION_PROMPT = (
+    "You are an expert translator specializing in content localization and digital media. "
+    "Translate the following Markdown document into {target_lang_full} ({target_lang_code}).\n\n"
+    "Keep all code blocks, inline code, file paths, URLs, and any technical content (like JSON, HTML, YAML, shell commands, etc.) unchanged.\n\n"
+    "Only translate human-readable text such as headings, paragraphs, and comments.\n\n"
+    "Preserve the original Markdown formatting and structure exactly as is.\n\n"
+    "Do not alter indentation, punctuation, or spacing.\n\n"
+    "Do not explain anything—just return the translated Markdown document.\n\n"
+    "Here is the Markdown content:\n\n\"{text}\"\n"
+)
+
 # Add toggles for rendering specific keys
 RENDER_KEYS = {
     "title": True,
@@ -38,7 +49,8 @@ RENDER_KEYS = {
     "tags": True,
     "categories": True,
     "date": True,
-    "draft": True
+    "draft": True,
+    "author": True, 
 }
 
 # Initialize the Google Translator
@@ -73,6 +85,7 @@ def translate_title(
     model: str = TRANSLATION_MODEL,
     api_url: str = TRANSLATION_API_URL
 ) -> str:
+    print(f"[LOG] Translating title: '{title}' from {source_lang} to {target_lang}")
     prompt = TITLE_TRANSLATION_PROMPT.format(
         source_lang_full=LANGUAGE_NAMES[source_lang],
         source_lang_code=source_lang,
@@ -85,14 +98,17 @@ def translate_title(
         "prompt": prompt,
         "stream": False
     }
-
+    print(f"[LOG] Sending title translation request to API: {api_url}")
     try:
         response = requests.post(api_url, json=payload)
         response.raise_for_status()
         data = response.json()
         translated_text = data.get("response", "").strip("")
+        print(f"[LOG] Title translation result: {translated_text}")
+        # Only replace quotes for title
         return replace_double_with_single_quotes(translated_text)
     except requests.RequestException as e:
+        print(f"[ERROR] Title translation failed: {e}")
         return f"[Error] {e}"
 
 def validate_frontmatter(file_path):
@@ -100,8 +116,10 @@ def validate_frontmatter(file_path):
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # Check if frontmatter starts and ends with '---'
-        if not (content.startswith("---\n") and content.endswith("\n---\n")):
+        # Check if frontmatter starts with '---' and contains a closing '---' (not necessarily at the end)
+        if not content.startswith("---\n"):
+            return False
+        if "\n---\n" not in content:
             return False
 
         # Parse frontmatter content
@@ -125,6 +143,7 @@ def translate_description(
     model: str = TRANSLATION_MODEL,
     api_url: str = TRANSLATION_API_URL
 ) -> str:
+    print(f"[LOG] Translating description: '{description}' from {source_lang} to {target_lang}")
     prompt = DESCRIPTION_TRANSLATION_PROMPT.format(
         source_lang_full=LANGUAGE_NAMES[source_lang],
         source_lang_code=source_lang,
@@ -137,14 +156,50 @@ def translate_description(
         "prompt": prompt,
         "stream": False
     }
-
+    print(f"[LOG] Sending description translation request to API: {api_url}")
     try:
         response = requests.post(api_url, json=payload)
         response.raise_for_status()
         data = response.json()
         translated_text = data.get("response", "").strip("")
+        print(f"[LOG] Description translation result: {translated_text}")
+        # Only replace quotes for description
         return replace_double_with_single_quotes(translated_text)
     except requests.RequestException as e:
+        print(f"[ERROR] Description translation failed: {e}")
+        return f"[Error] {e}"
+
+def translate_content(
+    content: str,
+    source_lang: str = SOURCE_LANG,
+    target_lang: str = TARGET_LANG,
+    model: str = TRANSLATION_MODEL,
+    api_url: str = TRANSLATION_API_URL
+) -> str:
+    print(f"[LOG] Translating content from {source_lang} to {target_lang}")
+    prompt = CONTENT_TRANSLATION_PROMPT.format(
+        source_lang_full=LANGUAGE_NAMES[source_lang],
+        source_lang_code=source_lang,
+        target_lang_full=LANGUAGE_NAMES[target_lang],
+        target_lang_code=target_lang,
+        text=content
+    )
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "stream": False
+    }
+    print(f"[LOG] Sending content translation request to API: {api_url}")
+    try:
+        response = requests.post(api_url, json=payload)
+        response.raise_for_status()
+        data = response.json()
+        translated_text = data.get("response", "").strip("")
+        print(f"[LOG] Content translation result: {translated_text[:100]}... (truncated)")
+        # Do NOT replace quotes for markdown content
+        return translated_text
+    except requests.RequestException as e:
+        print(f"[ERROR] Content translation failed: {e}")
         return f"[Error] {e}"
 
 async def translate_single_word(translator, word, target_lang):
@@ -160,6 +215,7 @@ async def translate_array_with_googletrans(translator, array: list, target_lang:
     results = await asyncio.gather(*tasks)
     translated_array.extend(results)
     return translated_array
+
 def process_markdown(file_path, output_path="output.md"):
     print(f"[INFO] Starting processing of markdown file: {file_path}")
 
@@ -172,9 +228,11 @@ def process_markdown(file_path, output_path="output.md"):
         return
 
     async def main():
+        print("[LOG] Entered async main() for processing.")
         translated_title = ""
         if RENDER_KEYS["title"]:
             original_title = post.get("title")
+            print(f"[LOG] Original title: {original_title}")
             if not original_title:
                 print("[ERROR] No title found in frontmatter.")
                 return
@@ -186,6 +244,7 @@ def process_markdown(file_path, output_path="output.md"):
         translated_description = ""
         if RENDER_KEYS["description"]:
             original_description = post.get("description")
+            print(f"[LOG] Original description: {original_description}")
             if original_description:
                 print("[INFO] Translating description...")
                 translated_description = translate_description(original_description)
@@ -194,6 +253,7 @@ def process_markdown(file_path, output_path="output.md"):
         translated_tags = []
         if RENDER_KEYS["tags"]:
             original_tags = post.get("tags", [])
+            print(f"[LOG] Original tags: {original_tags}")
             if original_tags:
                 print(f"[INFO] Translating tags from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
                 translated_tags = await translate_array_with_googletrans(translator, original_tags)
@@ -202,6 +262,7 @@ def process_markdown(file_path, output_path="output.md"):
         translated_categories = []
         if RENDER_KEYS["categories"]:
             original_categories = post.get("categories", [])
+            print(f"[LOG] Original categories: {original_categories}")
             if original_categories:
                 print(f"[INFO] Translating categories from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
                 translated_categories = await translate_array_with_googletrans(translator, original_categories)
@@ -219,12 +280,27 @@ def process_markdown(file_path, output_path="output.md"):
             "date": date if RENDER_KEYS["date"] else None,
             "draft": draft if RENDER_KEYS["draft"] else None
         }
+        print(f"[LOG] New metadata for frontmatter: {new_metadata}")
         new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
         new_frontmatter = clean_frontmatter_value(new_frontmatter)
+        print(f"[LOG] New frontmatter generated:\n{new_frontmatter}")
 
         try:
             with open(output_path, "w", encoding="utf-8") as f:
+                print(f"[LOG] Writing frontmatter to {output_path}")
                 f.write(new_frontmatter)
+                # Translate the AI generated message
+                ai_message_en = "> This content was automatically translated and rewritten in {lang} by AI.".format(lang=LANGUAGE_NAMES[TARGET_LANG])
+                print(f"[LOG] Translating AI notification message: {ai_message_en}")
+                ai_message_translated = translate_content(ai_message_en)
+                print(f"[LOG] Writing AI notification message: {ai_message_translated}")
+                f.write(f"\n{ai_message_translated}\n")
+                # Get markdown content (without frontmatter)
+                markdown_content = post.content
+                print(f"[LOG] Translating markdown content (first 100 chars): {markdown_content[:100]}... (truncated)")
+                translated_markdown = translate_content(markdown_content)
+                print(f"[LOG] Writing translated markdown content (first 100 chars): {translated_markdown[:100]}... (truncated)")
+                f.write(f"\n{translated_markdown}\n")
             print(f"[INFO] Successfully wrote translated content to: {output_path}")
         except Exception as e:
             print(f"[ERROR] Failed to write output file: {e}")
