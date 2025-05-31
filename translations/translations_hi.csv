@@ -1,0 +1,460 @@
+word,translation
+Automation,ऑटोमेशन
+Linux,लिनक्स
+SSH,एसएसएच
+OpenSSH,ओपनएसएसएच
+How-to,कैसे करें
+Comment,टिप्पणी
+Arch Linux,आर्च लिनक्स
+Firewall,फ़ायरवॉल
+Router,राउटर
+Switch,स्विच
+Server,सर्वर
+Client,क्लाइंट
+Kernel,कर्नेल
+Terminal,टर्मिनल
+Command Line Interface,कमांड लाइन इंटरफ़ेस
+Graphical User Interface,ग्राफ़िकल यूज़र इंटरफ़ेस
+Software,सॉफ़्टवेयर
+Hardware,हार्डवेयर
+Firmware,फ़र्मवेयर
+Middleware,मिडलवेयर
+Application,एप्लिकेशन
+Program,प्रोग्राम
+Code,कोड
+Script,स्क्रिप्ट
+Algorithm,एल्गोरिदम
+Database,डेटाबेस
+Cloud Computing,क्लाउड कंप्यूटिंग
+Virtualization,वर्चुअलाइज़ेशन
+Containerization,कंटेनराइज़ेशन
+Docker,डॉकर
+Kubernetes,कुबरनेट्स
+API (Application Programming Interface),एपीआई (एप्लिकेशन प्रोग्रामिंग इंटरफ़ेस)
+SDK (Software Development Kit),एसडीके (सॉफ़्टवेयर डेवलपमेंट किट)
+IDE (Integrated Development Environment),आईडीई (इंटीग्रेटेड डेवलपमेंट एनवायरनमेंट)
+Git,गिट
+GitHub,गिटहब
+Repository,रिपॉजिटरी
+Branch,ब्रांच
+Commit,कमिट
+Merge,मर्ज
+Pull Request,पुल रिक्वेस्ट
+Bug,बग
+Debug,डीबग
+Cache,कैश
+Cookie,कुकी
+Plugin,प्लगइन
+Widget,विजेट
+Framework,फ़्रेमवर्क
+Library,लाइब्रेरी
+Module,मॉड्यूल
+Domain Name System,डोमेन नेम सिस्टम
+IP Address,आईपी एड्रेस
+URL (Uniform Resource Locator),यूआरएल (यूनिफ़ॉर्म रिसोर्स लोकेटर)
+HTTP (Hypertext Transfer Protocol),एचटीटीपी (हाइपरटेक्स्ट ट्रांसफ़र प्रोटोकॉल)
+HTTPS (Hypertext Transfer Protocol Secure),एचटीटीपीएस (हाइपरटेक्स्ट ट्रांसफ़र प्रोटोकॉल सिक्योर)
+SSL (Secure Sockets Layer),एसएसएल (सिक्योर सॉकेट्स लेयर)
+TLS (Transport Layer Security),टीएलएस (ट्रांसपोर्ट लेयर सिक्योरिटी)
+Encryption,एन्क्रिप्शन
+Decryption,डिक्रिप्शन
+Authentication,प्रमाणीकरण
+Authorization,प्राधिकरण
+Cybersecurity,साइबर सुरक्षा
+Malware,मैलवेयर
+Virus,वायरस
+Trojan,ट्रोजन
+Ransomware,रैंसमवेयर
+Phishing,फ़िशिंग
+Firewall,फ़ायरवॉल
+VPN (Virtual Private Network),वीपीएन (वर्चुअल प्राइवेट नेटवर्क)
+Backup,बैकअप
+Restore,रिस्टोर
+Big Data,बिग डेटा
+Machine Learning,मशीन लर्निंग
+Artificial Intelligence,आर्टिफिशियल इंटेलिजेंस
+Internet of Things,इंटरनेट ऑफ़ थिंग्स
+Blockchain,ब्लॉकचेन
+Cryptocurrency,क्रिप्टोकरेंसी
+Open Source,ओपन सोर्स
+Proprietary Software,प्रोप्राइटरी सॉफ़्टवेयर
+User,यूज़र
+Administrator,एडमिनिस्ट्रेटर
+Developer,डेवलपर
+Engineer,इंजीनियर
+Syntax,सिंटैक्स
+Compiler,कंपाइलर
+Interpreter,इंटरप्रpreter
+Object-Oriented Programming,ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग
+Functional Programming,फ़ंक्शनल प्रोग्रामिंग
+Frontend,फ्रंटएंड
+Backend,बैकएंड
+Full Stack,फ़ुल स्टैक
+DevOps,डेवऑप्स
+Agile,एजाइल
+Scrum,स्क्रम
+Waterfall Model,वाटरफॉल मॉडल
+Pixel,पिक्सल
+Resolution,रिज़ॉल्यूशन
+Bandwidth,बैंडविड्थ
+Latency,लेटेंसी
+Driver,ड्राइवर
+Operating System,ऑपरेटिंग सिस्टम
+BIOS,बायोस
+UEFI,यूईएफआई
+Bootloader,बूटलोडर
+Partition,पार्टीशन
+File System,फ़ाइल सिस्टम
+Directory,डायरेक्टरी
+File,फ़ाइल
+Folder,फ़ोल्डर
+Proxy Server,प्रॉक्सी सर्वर
+Load Balancer,लोड बैलेंसर
+Data Center,डेटा सेंटर
+Microservices,माइक्रोसर्विस
+Monolith,मोनोलिथ
+Stack Overflow,स्टैक ओवरफ़्लो
+Boolean,बूलियन
+Integer,इंटीजर
+String,स्ट्रिंग
+Array,ऐरे
+Variable,वैरिएबल
+Function,फ़ंक्शन
+Class,क्लास
+Object,ऑब्जेक्ट
+Method,मेथड
+Parameter,पैरामीटर
+Argument,आर्गुमेंट
+Loop,लूप
+Conditional Statement,कंडीशनल स्टेटमेंट
+Pointer,पॉइंटर
+Memory,मेमोरी
+CPU (Central Processing Unit),सीपीयू (सेंट्रल प्रोसेसिंग यूनिट)
+GPU (Graphics Processing Unit),जीपीयू (ग्राफ़िक्स प्रोसेसिंग यूनिट)
+RAM (Random Access Memory),रैम (रैंडम एक्सेस मेमोरी)
+ROM (Read-Only Memory),रोम (रीड-ओनली मेमोरी)
+SSD (Solid State Drive),एसएसडी (सॉलिड स्टेट ड्राइव)
+HDD (Hard Disk Drive),एचडीडी (हार्ड डिस्क ड्राइव)
+Motherboard,मदरबोर्ड
+Power Supply,पावर सप्लाई
+Network Interface Card,नेटवर्क इंटरफ़ेस कार्ड
+Wi-Fi,वाई-फ़ाई
+Bluetooth,ब्लूटूथ
+USB (Universal Serial Bus),यूएसबी (यूनिवर्सल सीरियल बस)
+HDMI (High-Definition Multimedia Interface),एचडीएमआई (हाई-डेफ़िनिशन मल्टीमीडिया इंटरफ़ेस)
+Ethernet,ईथरनेट
+Packet,पैकेट
+Protocol,प्रोटोकॉल
+Port,पोर्ट
+Firewall Rule,फ़ायरवॉल रूल
+Subnet Mask,सबनेट मास्क
+Gateway,गेटवे
+DNS Server,डीएनएस सर्वर
+DHCP (Dynamic Host Configuration Protocol),डीएचसीपी (डायनामिक होस्ट कॉन्फ़िगरेशन प्रोटोकॉल)
+Virtual Machine,वर्चुअल मशीन
+Hypervisor,हाइपरवाइज़र
+Emulator,एम्यूलेटर
+Simulator,सिम्युलेटर
+Pixel Density,पिक्सल डेंसिटी
+Refresh Rate,रिफ़्रेश रेट
+Responsive Design,रिस्पॉन्सिव डिज़ाइन
+User Experience (UX),यूज़र एक्सपीरियंस (यूएक्स)
+User Interface (UI),यूज़र इंटरफ़ेस (यूआई)
+Dark Mode,डार्क मोड
+Light Mode,लाइट मोड
+Beta Version,बीटा वर्ज़न
+Alpha Version,अल्फ़ा वर्ज़न
+Stable Release,स्टेबल रिलीज़
+Patch,पैच
+Update,अपडेट
+Upgrade,अपग्रेड
+Downgrade,डाउनग्रेड
+Legacy System,लेगेसी सिस्टम
+Mainframe,मेनफ़्रेम
+Supercomputer,सुपरकंप्यूटर
+Quantum Computing,क्वांटम कंप्यूटिंग
+Augmented Reality,ऑगमेंटेड रियलिटी
+Virtual Reality,वर्चुअल रियलिटी
+Mixed Reality,मिक्स्ड रियलिटी
+E-commerce,ई-कॉमर्स
+SaaS (Software as a Service),सास (सॉफ़्टवेयर एज़ ए सर्विस)
+PaaS (Platform as a Service),पास (प्लेटफ़ॉर्म एज़ ए सर्विस)
+IaaS (Infrastructure as a Service),आईएएएस (इंफ़्रास्ट्रक्चर एज़ ए सर्विस)
+Session,सेशन
+Token,टोकन
+Metadata,मेटाडेटा
+Stack,स्टैक
+Queue,क्यू
+Tree,ट्री
+Graph,ग्राफ़
+Node,नोड
+Edge,एज
+Byte,बाइट
+Kilobyte,किलोबाइट
+Megabyte,मेगाबाइट
+Gigabyte,गीगाबाइट
+Terabyte,टेराबाइट
+Petabyte,पेटाबाइट
+Bit,बिट
+Boolean Logic,बूलियन लॉजिक
+Binary,बाइनरी
+Hexadecimal,हेक्साडेसिमल
+ASCII,आस्की
+Unicode,यूनिकोड
+UTF-8,यूटीएफ़-8
+Markdown,मार्कडाउन
+JSON,जेसन
+XML,एक्सएमएल
+YAML,वाईएएमएल
+CSV (Comma-Separated Values),सीएसवी (कॉमा-सेपरेटेड वैल्यूज़)
+SQL (Structured Query Language),एसक्यूएल (स्ट्रक्चर्ड क्वेरी लैंग्वेज)
+NoSQL,नोएसक्यूएल
+LAMP Stack,लैंप स्टैक
+MEAN Stack,मीन स्टैक
+MERN Stack,मर्न स्टैक
+Serverless,सर्वरलेस
+Edge Computing,एज कंप्यूटिंग
+Digital Signature,डिजिटल सिग्नेचर
+Two-Factor Authentication,टू-फ़ैक्टर ऑथेंटिकेशन
+Multi-Factor Authentication,मल्टी-फ़ैक्टर ऑथेंटिकेशन
+Firewall Log,फ़ायरवॉल लॉग
+System Log,सिस्टम लॉग
+Error Message,एरर मैसेज
+Warning Message,वॉर्निंग मैसेज
+Notification,नोटिफ़िकेशन
+Dashboard,डैशबोर्ड
+Configuration,कॉन्फ़िगरेशन
+Deployment,डिप्लॉयमेंट
+Scalability,स्केलेबिलिटी
+Reliability,रिलायबिलिटी
+Availability,अवेलेबिलिटी
+Performance,परफ़ॉर्मेंस
+Latency,लेटेंसी
+Throughput,थ्रूपुट
+Benchmark,बेंचमार्क
+Profiling,प्रोफ़ाइलिंग
+Optimization,ऑप्टिमाइज़ेशन
+Refactoring,रिफ़ैक्टरिंग
+Version Control,वर्ज़न कंट्रोल
+Continuous Integration,कंटीन्यूअस इंटीग्रेशन
+Continuous Delivery,कंटीन्यूअस डिलीवरी
+Continuous Deployment,कंटीन्यूअस डिप्लॉयमेंट
+Testing,टेस्टिंग
+Unit Test,यूनिट टेस्ट
+Integration Test,इंटीग्रेशन टेस्ट
+End-to-End Test,एंड-टू-एंड टेस्ट
+Acceptance Test,एक्सेप्टेंस टेस्ट
+Regression Test,रिग्रेशन टेस्ट
+Load Test,लोड टेस्ट
+Stress Test,स्ट्रेस टेस्ट
+Penetration Test,पेनेट्रेशन टेस्ट
+White Box Testing,व्हाइट बॉक्स टेस्टिंग
+Black Box Testing,ब्लैक बॉक्स टेस्टिंग
+Gray Box Testing,ग्रे बॉक्स टेस्टिंग
+Framework Laptop,फ़्रेमवर्क लैपटॉप
+Raspberry Pi,रास्पबेरी पाई
+Arduino,आर्डुइनो
+Web Browser,वेब ब्राउज़र
+Search Engine,सर्च इंजन
+Social Media,सोशल मीडिया
+Blog,ब्लॉग
+Podcast,पॉडकास्ट
+Webinar,वेबिनार
+Streaming,स्ट्रीमिंग
+Download,डाउनलोड
+Upload,अपलोड
+Screenshot,स्क्रीनशॉट
+Screencast,स्क्रीनकास्ट
+Drag and Drop,ड्रैग एंड ड्रॉप
+Copy Paste,कॉपी पेस्ट
+Cut Paste,कट पेस्ट
+Undo,अनडू
+Redo,रीडू
+Save,सेव
+Open,ओपन
+Print,प्रिंट
+Exit,एग्जिट
+Login,लॉगइन
+Logout,लॉगआउट
+Sign up,साइन अप
+Password,पासवर्ड
+Username,यूज़रनेम
+Email,ईमेल
+Spam,स्पैम
+Junk Mail,जंक मेल
+Inbox,इनबॉक्स
+Outbox,आउटबॉक्स
+Draft,ड्राफ़्ट
+Archive,आर्काइव
+Trash,ट्रैश
+Recycle Bin,रीसायकल बिन
+Desktop,डेस्कटॉप
+Icon,आइकन
+Shortcut,शॉर्टकट
+Taskbar,टास्कबार
+Menu,मेनू
+Window,विंडो
+Tab,टैब
+Toolbar,टूलबार
+Scrollbar,स्क्रॉलबार
+Hyperlink,हाइपरलिंक
+Bookmark,बुकमार्क
+Browser Extension,ब्राउज़र एक्सटेंशन
+Add-on,ऐड-ऑन
+Dark Web,डार्क वेब
+Deep Web,डीप वेब
+Surface Web,सरफ़ेस वेब
+Intranet,इंट्रानेट
+Extranet,एक्स्ट्रानेट
+Peer-to-Peer,पीयर-टू-पीयर
+Client-Server Model,क्लाइंट-सर्वर मॉडल
+Domain Registrar,डोमेन रजिस्ट्रार
+Web Hosting,वेब होस्टिंग
+Shared Hosting,शेयर्ड होस्टिंग
+Dedicated Server,डेडीकेटेड सर्वर
+VPS (Virtual Private Server),वीपीएस (वर्चुअल प्राइवेट सर्वर)
+Content Delivery Network,कंटेंट डिलीवरी नेटवर्क
+Bandwidth Cap,बैंडविड्थ कैप
+Data Cap,डेटा कैप
+Ping,पिंग
+Traceroute,ट्रेसराउट
+IPConfig,आईपीकॉन्फ़िग
+Ifconfig,इफ़कॉन्फ़िग
+Netstat,नेटस्टैट
+Task Manager,टास्क मैनेजर
+Activity Monitor,एक्टिविटी मॉनीटर
+System Monitor,सिस्टम मॉनीटर
+Command Prompt,कमांड प्रॉम्प्ट
+PowerShell,पावरशेल
+Bash,बैश
+Zsh,ज़ेडएसएच
+Fish Shell,फ़िश शेल
+Shell Script,शेल स्क्रिप्ट
+Cron Job,क्रॉन जॉब
+Daemon,डेमन
+Service,सर्विस
+Process,प्रोसेस
+Thread,थ्रेड
+Multithreading,मल्टीथ्रेडिंग
+Multiprocessing,मल्टीप्रोसेसिंग
+Deadlock,डेडलॉक
+Race Condition,रेस कंडीशन
+Semaphore,सेमाफ़ोर
+Mutex,म्यूटेक्स
+Compiler Optimization,कंपाइलर ऑप्टिमाइज़ेशन
+Assembly Language,असेंबली लैंग्वेज
+Machine Code,मशीन कोड
+Bytecode,बाइटकोड
+Just-In-Time Compilation,जस्ट-इन-टाइम कंपाइलेशन
+Ahead-Of-Time Compilation,अहेड-ऑफ़-टाइम कंपाइलेशन
+Garbage Collection,गार्बेज कलेक्शन
+Memory Leak,मेमोरी लीक
+Buffer Overflow,बफ़र ओवरफ़्लो
+Stack Overflow (Error),स्टैक ओवरफ़्लो (एरर)
+Heap (Memory),हीप (मेमोरी)
+Stack (Memory),स्टैक (मेमोरी)
+Recursion,रिकर्शन
+Iteration,आइटेरेशन
+Data Structure,डेटा स्ट्रक्चर
+Sorting Algorithm,सॉर्टिंग एल्गोरिदम
+Search Algorithm,सर्च एल्गोरिदम
+Graph Algorithm,ग्राफ़ एल्गोरिदम
+Dynamic Programming,डायनामिक प्रोग्रामिंग
+Greedy Algorithm,ग्रीडी एल्गोरिदम
+Divide and Conquer,डिवाइड एंड कॉन्कर
+Brute Force,ब्रूट फ़ोर्स
+Heuristic,ह्यूरिस्टिक
+Regular Expression,रेगुलर एक्सप्रेशन
+Parser,पार्सर
+Lexer,लेक्सर
+Abstract Syntax Tree,एब्स्ट्रैक्ट सिंटैक्स ट्री
+Linker,लिंकर
+Loader,लोडर
+Kernel Module,कर्नेल मॉड्यूल
+Device Driver,डिवाइस ड्राइवर
+Interrupt,इंटरप्ट
+System Call,सिस्टम कॉल
+Real-Time Operating System,रियल-टाइम ऑपरेटिंग सिस्टम
+Embedded System,एम्बेडेड सिस्टम
+Firmware Update,फ़र्मवेयर अपडेट
+Over-the-Air Update,ओवर-द-एयर अपडेट
+Side Loading,साइड लोडिंग
+Jailbreaking,जेलब्रेकिंग
+Rooting,रूटिंग
+Custom ROM,कस्टम रोम
+Bloatware,ब्लोटवेयर
+Adware,एडवेयर
+Spyware,स्पाइवेयर
+Keylogger,कीलॉगर
+Botnet,बॉटनेट
+DDoS Attack,डीडीओएस अटैक
+Man-in-the-Middle Attack,मैन-इन-द-मिडल अटैक
+SQL Injection,एसक्यूएल इंजेक्शन
+Cross-Site Scripting (XSS),क्रॉस-साइट स्क्रिप्टिंग (एक्सएसएस)
+Cross-Site Request Forgery (CSRF),क्रॉस-साइट रिक्वेस्ट फ़ोर्जरी (सीएसआरएफ)
+Security Patch,सिक्योरिटी पैच
+Vulnerability,वल्नरेबिलिटी
+Exploit,एक्सप्लॉइट
+Zero-Day Exploit,ज़ीरो-डे एक्सप्लॉइट
+Security Audit,सिक्योरिटी ऑडिट
+Penetration Testing,पेनेट्रेशन टेस्टिंग
+Ethical Hacking,एथिकल हैकिंग
+Digital Forensics,डिजिटल फ़ोरेंसिक्स
+Sandbox,सैंडबॉक्स
+Honeypot,हनीपॉट
+Firewall Policy,फ़ायरवॉल पॉलिसी
+Intrusion Detection System,इंट्रूज़न डिटेक्शन सिस्टम
+Intrusion Prevention System,इंट्रूज़न प्रिवेंशन सिस्टम
+Security Information and Event Management,सिक्योरिटी इन्फ़ॉर्मेशन एंड इवेंट मैनेजमेंट
+Access Control List,एक्सेस कंट्रोल लिस्ट
+Role-Based Access Control,रोल-बेस्ड एक्सेस कंट्रोल
+Principle of Least Privilege,प्रिंसिपल ऑफ़ लीस्ट प्रिविलेज
+Defense in Depth,डिफ़ेंस इन डेप्थ
+Zero Trust Security,ज़ीरो ट्रस्ट सिक्योरिटी
+Biometric Authentication,बायोमेट्रिक ऑथेंटिकेशन
+Smart Card,स्मार्ट कार्ड
+Public Key Infrastructure,पब्लिक की इंफ़्रास्ट्रक्चर
+Certificate Authority,सर्टिफ़िकेट अथॉरिटी
+Digital Certificate,डिजिटल सर्टिफ़िकेट
+End-to-End Encryption,एंड-टू-एंड एन्क्रिप्शन
+Homomorphic Encryption,होमोमॉर्फिक एन्क्रिप्शन
+Quantum Cryptography,क्वांटम क्रिप्टोग्राफ़ी
+Steganography,स्टेग्नोग्राफ़ी
+Data Mining,डेटा माइनिंग
+Data Warehousing,डेटा वेयरहाउसिंग
+Data Lake,डेटा लेक
+ETL (Extract, Transform, Load),ईटीएल (एक्सट्रैक्ट, ट्रांसफ़ॉर्म, लोड)
+Data Visualization,डेटा विज़ुअलाइज़ेशन
+Business Intelligence,बिज़नेस इंटेलिजेंस
+Predictive Analytics,प्रेडिक्टिव एनालिटICS
+Natural Language Processing,नेचुरल लैंग्वेज प्रोसेसिंग
+Computer Vision,कंप्यूटर विज़न
+Robotics,रोबोटिक्स
+Neural Network,न्यूरल नेटवर्क
+Deep Learning,डीप लर्निंग
+Reinforcement Learning,रीइन्फ़ोर्समेंट लर्निंग
+Supervised Learning,सुपरवाइज़्ड लर्निंग
+Unsupervised Learning,अनसुपरवाइज़्ड लर्निंग
+Transfer Learning,ट्रांसफ़र लर्निंग
+Generative Adversarial Network,जेनरेटिव एडवरसैरियल नेटवर्क
+Model Training,मॉडल ट्रेनिंग
+Dataset,डेटासेट
+Feature Engineering,फ़ीचर इंजीनियरिंग
+Overfitting,ओवरफ़िटिंग
+Underfitting,अंडरफ़िटिंग
+Hyperparameter Tuning,हाइपरपैरामीटर ट्यूनिंग
+A/B Testing,ए/बी टेस्टिंग
+Web Scraping,वेब स्क्रैपिंग
+Data Cleansing,डेटा क्लींजिंग
+Data Wrangling,डेटा रैंगलिंग
+No-Code Platform,नो-कोड प्लेटफ़ॉर्म
+Low-Code Platform,लो-कोड प्लेटफ़ॉर्म
+Progressive Web App,प्रोग्रेसिव वेब ऐप
+Single-Page Application,सिंगल-पेज एप्लिकेशन
+Micro-frontend,माइक्रो-फ़्रंटएंड
+WebAssembly,वेबअसेंबली
+GraphQL,ग्राफ़क्यूएल
+REST API,रेस्ट एपीआई
+SOAP API,सोप एपीआई
+Webhook,वेबहूक
+Cron Tab,क्रॉन टैब
