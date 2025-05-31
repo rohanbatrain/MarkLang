@@ -42,3 +42,32 @@ process_markdown("example.md")
 - Add support for additional frontmatter fields.
 - Optimize API calls for better performance.
 - Implement unit tests to ensure reliability and correctness.
+
+## 15 / 05 - Today's Achievements
+
+### 1. CLI Refactor and Language Flexibility
+- Refactored the script to be fully CLI-based, allowing users to specify input/output files, source and target languages, and translation model.
+- Output file paths are now automatically generated based on the target language directory.
+
+### 2. Custom Dictionary Support
+- Implemented per-language custom dictionary CSVs (e.g., `translations_hi.csv`, `translations_fr.csv`) for tags and categories.
+- The script checks the custom dictionary first for each tag/category before using Google Translate or transliteration.
+
+### 3. Robust Fallbacks for Tags/Categories
+- If Google Translate fails, the script now uses offline transliteration (e.g., Devanagari for Hindi, Thai script for Thai) for technical terms and proper nouns.
+- Ensured all tags/categories are always treated as arrays and properly transliterated or translated.
+
+### 4. Logging and Error Handling
+- Added extensive logging for all major steps, including dictionary loading, translation, and file operations.
+- Improved error handling for missing dependencies, invalid frontmatter, and translation failures.
+
+### 5. Production-Readiness
+- Modularized and documented the code for maintainability.
+- Added type hints, docstrings, and improved CLI/UX for real-world use.
+
+### 6. Example Custom Dictionary Files
+- Created sample `translations_hi.csv` and `translations_fr.csv` for Hindi and French, supporting easy extension to other languages.
+
+---
+
+These changes make MarkLang more robust, flexible, and ready for production and collaborative use.

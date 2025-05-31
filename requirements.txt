@@ -1,0 +1,6 @@
+googletrans==4.0.0rc1
+frontmatter
+requests
+indic-transliteration
+aksharamukha
+# libretranslatepy

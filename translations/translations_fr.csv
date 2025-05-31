@@ -1,3 +1,5 @@
+Sure, here's the list of French (fr) translations for the provided English words:
+
 word,translation
 Automation,Automatisation
 Linux,Linux
@@ -6,3 +8,455 @@ OpenSSH,OpenSSH
 How-to,Comment faire
 Comment,Commentaire
 Arch Linux,Arch Linux
+Firewall,Pare-feu
+Router,Routeur
+Switch,Commutateur
+Server,Serveur
+Client,Client
+Kernel,Noyau
+Terminal,Terminal
+Command Line Interface,Interface en ligne de commande
+Graphical User Interface,Interface utilisateur graphique
+Software,Logiciel
+Hardware,Matériel
+Firmware,Micrologiciel
+Middleware,Middleware
+Application,Application
+Program,Programme
+Code,Code
+Script,Script
+Algorithm,Algorithme
+Database,Base de données
+Cloud Computing,Cloud Computing
+Virtualization,Virtualisation
+Containerization,Conteneurisation
+Docker,Docker
+Kubernetes,Kubernetes
+API (Application Programming Interface),API (Interface de programmation d'applications)
+SDK (Software Development Kit),SDK (Kit de développement logiciel)
+IDE (Integrated Development Environment),IDE (Environnement de développement intégré)
+Git,Git
+GitHub,GitHub
+Repository,Dépôt
+Branch,Branche
+Commit,Commit
+Merge,Fusion
+Pull Request,Demande de tirage
+Bug,Bogue
+Debug,Déboguer
+Cache,Cache
+Cookie,Cookie
+Plugin,Plugin
+Widget,Widget
+Framework,Framework
+Library,Bibliothèque
+Module,Module
+Domain Name System,Système de noms de domaine
+IP Address,Adresse IP
+URL (Uniform Resource Locator),URL (Localisateur uniforme de ressources)
+HTTP (Hypertext Transfer Protocol),HTTP (Protocole de transfert hypertexte)
+HTTPS (Hypertext Transfer Protocol Secure),HTTPS (Protocole de transfert hypertexte sécurisé)
+SSL (Secure Sockets Layer),SSL (Couche de sockets sécurisés)
+TLS (Transport Layer Security),TLS (Sécurité de la couche de transport)
+Encryption,Chiffrement
+Decryption,Déchiffrement
+Authentication,Authentification
+Authorization,Autorisation
+Cybersecurity,Cybersécurité
+Malware,Logiciel malveillant
+Virus,Virus
+Trojan,Cheval de Troie
+Ransomware,Ransomware
+Phishing,Hameçonnage
+Firewall,Pare-feu
+VPN (Virtual Private Network),VPN (Réseau privé virtuel)
+Backup,Sauvegarde
+Restore,Restaurer
+Big Data,Big Data
+Machine Learning,Apprentissage automatique
+Artificial Intelligence,Intelligence artificielle
+Internet of Things,Internet des objets
+Blockchain,Blockchain
+Cryptocurrency,Cryptomonnaie
+Open Source,Open Source
+Proprietary Software,Logiciel propriétaire
+User,Utilisateur
+Administrator,Administrateur
+Developer,Développeur
+Engineer,Ingénieur
+Syntax,Syntaxe
+Compiler,Compilateur
+Interpreter,Interprète
+Object-Oriented Programming,Programmation orientée objet
+Functional Programming,Programmation fonctionnelle
+Frontend,Frontend
+Backend,Backend
+Full Stack,Full Stack
+DevOps,DevOps
+Agile,Agile
+Scrum,Scrum
+Waterfall Model,Modèle en cascade
+Pixel,Pixel
+Resolution,Résolution
+Bandwidth,Bande passante
+Latency,Latence
+Driver,Pilote
+Operating System,Système d'exploitation
+BIOS,BIOS
+UEFI,UEFI
+Bootloader,Chargeur de démarrage
+Partition,Partition
+File System,Système de fichiers
+Directory,Répertoire
+File,Fichier
+Folder,Dossier
+Proxy Server,Serveur proxy
+Load Balancer,Équilibreur de charge
+Data Center,Centre de données
+Microservices,Microservices
+Monolith,Monolithe
+Stack Overflow,Stack Overflow
+Boolean,Booléen
+Integer,Entier
+String,Chaîne de caractères
+Array,Tableau
+Variable,Variable
+Function,Fonction
+Class,Classe
+Object,Objet
+Method,Méthode
+Parameter,Paramètre
+Argument,Argument
+Loop,Boucle
+Conditional Statement,Instruction conditionnelle
+Pointer,Pointeur
+Memory,Mémoire
+CPU (Central Processing Unit),CPU (Unité centrale de traitement)
+GPU (Graphics Processing Unit),GPU (Unité de traitement graphique)
+RAM (Random Access Memory),RAM (Mémoire vive)
+ROM (Read-Only Memory),ROM (Mémoire morte)
+SSD (Solid State Drive),SSD (Disque SSD)
+HDD (Hard Disk Drive),HDD (Disque dur)
+Motherboard,Carte mère
+Power Supply,Alimentation
+Network Interface Card,Carte d'interface réseau
+Wi-Fi,Wi-Fi
+Bluetooth,Bluetooth
+USB (Universal Serial Bus),USB (Bus série universel)
+HDMI (High-Definition Multimedia Interface),HDMI (Interface multimédia haute définition)
+Ethernet,Ethernet
+Packet,Paquet
+Protocol,Protocole
+Port,Port
+Firewall Rule,Règle de pare-feu
+Subnet Mask,Masque de sous-réseau
+Gateway,Passerelle
+DNS Server,Serveur DNS
+DHCP (Dynamic Host Configuration Protocol),DHCP (Protocole de configuration dynamique d'hôtes)
+Virtual Machine,Machine virtuelle
+Hypervisor,Hyperviseur
+Emulator,Émulateur
+Simulator,Simulateur
+Pixel Density,Densité de pixels
+Refresh Rate,Taux de rafraîchissement
+Responsive Design,Conception adaptative
+User Experience (UX),Expérience utilisateur (UX)
+User Interface (UI),Interface utilisateur (UI)
+Dark Mode,Mode sombre
+Light Mode,Mode clair
+Beta Version,Version bêta
+Alpha Version,Version alpha
+Stable Release,Version stable
+Patch,Correctif
+Update,Mise à jour
+Upgrade,Mise à niveau
+Downgrade,Rétrogradation
+Legacy System,Système hérité
+Mainframe,Mainframe
+Supercomputer,Superordinateur
+Quantum Computing,Informatique quantique
+Augmented Reality,Réalité augmentée
+Virtual Reality,Réalité virtuelle
+Mixed Reality,Réalité mixte
+E-commerce,E-commerce
+SaaS (Software as a Service),SaaS (Logiciel en tant que service)
+PaaS (Platform as a Service),PaaS (Plateforme en tant que service)
+IaaS (Infrastructure as a Service),IaaS (Infrastructure en tant que service)
+Session,Session
+Token,Jeton
+Metadata,Métadonnées
+Stack,Pile
+Queue,File d'attente
+Tree,Arbre
+Graph,Graphe
+Node,Nœud
+Edge,Arête
+Byte,Octet
+Kilobyte,Kilo-octet
+Megabyte,Mégaoctet
+Gigabyte,Giga-octet
+Terabyte,Téraoctet
+Petabyte,Pétaoctet
+Bit,Bit
+Boolean Logic,Logique booléenne
+Binary,Binaire
+Hexadecimal,Hexadécimal
+ASCII,ASCII
+Unicode,Unicode
+UTF-8,UTF-8
+Markdown,Markdown
+JSON,JSON
+XML,XML
+YAML,YAML
+CSV (Comma-Separated Values),CSV (Valeurs séparées par des virgules)
+SQL (Structured Query Language),SQL (Langage de requête structuré)
+NoSQL,NoSQL
+LAMP Stack,Pile LAMP
+MEAN Stack,Pile MEAN
+MERN Stack,Pile MERN
+Serverless,Sans serveur
+Edge Computing,Informatique en périphérie
+Digital Signature,Signature numérique
+Two-Factor Authentication,Authentification à deux facteurs
+Multi-Factor Authentication,Authentification multifacteur
+Firewall Log,Journal du pare-feu
+System Log,Journal système
+Error Message,Message d'erreur
+Warning Message,Message d'avertissement
+Notification,Notification
+Dashboard,Tableau de bord
+Configuration,Configuration
+Deployment,Déploiement
+Scalability,Évolutivité
+Reliability,Fiabilité
+Availability,Disponibilité
+Performance,Performance
+Latency,Latence
+Throughput,Débit
+Benchmark,Benchmark
+Profiling,Profilage
+Optimization,Optimisation
+Refactoring,Refactorisation
+Version Control,Contrôle de version
+Continuous Integration,Intégration continue
+Continuous Delivery,Livraison continue
+Continuous Deployment,Déploiement continu
+Testing,Tests
+Unit Test,Test unitaire
+Integration Test,Test d'intégration
+End-to-End Test,Test de bout en bout
+Acceptance Test,Test d'acceptation
+Regression Test,Test de régression
+Load Test,Test de charge
+Stress Test,Test de stress
+Penetration Test,Test d'intrusion
+White Box Testing,Test boîte blanche
+Black Box Testing,Test boîte noire
+Gray Box Testing,Test boîte grise
+Framework Laptop,Ordinateur portable Framework
+Raspberry Pi,Raspberry Pi
+Arduino,Arduino
+Web Browser,Navigateur web
+Search Engine,Moteur de recherche
+Social Media,Médias sociaux
+Blog,Blog
+Podcast,Podcast
+Webinar,Webinaire
+Streaming,Streaming
+Download,Télécharger
+Upload,Téléverser
+Screenshot,Capture d'écran
+Screencast,Screencast
+Drag and Drop,Glisser-déposer
+Copy Paste,Copier-coller
+Cut Paste,Couper-coller
+Undo,Annuler
+Redo,Rétablir
+Save,Enregistrer
+Open,Ouvrir
+Print,Imprimer
+Exit,Quitter
+Login,Connexion
+Logout,Déconnexion
+Sign up,S'inscrire
+Password,Mot de passe
+Username,Nom d'utilisateur
+Email,E-mail
+Spam,Spam
+Junk Mail,Courrier indésirable
+Inbox,Boîte de réception
+Outbox,Boîte d'envoi
+Draft,Brouillon
+Archive,Archive
+Trash,Corbeille
+Recycle Bin,Corbeille
+Desktop,Bureau
+Icon,Icône
+Shortcut,Raccourci
+Taskbar,Barre des tâches
+Menu,Menu
+Window,Fenêtre
+Tab,Onglet
+Toolbar,Barre d'outils
+Scrollbar,Barre de défilement
+Hyperlink,Hyperlien
+Bookmark,Signet
+Browser Extension,Extension de navigateur
+Add-on,Add-on
+Dark Web,Dark Web
+Deep Web,Deep Web
+Surface Web,Surface Web
+Intranet,Intranet
+Extranet,Extranet
+Peer-to-Peer,Pair à pair
+Client-Server Model,Modèle client-serveur
+Domain Registrar,Registraire de domaine
+Web Hosting,Hébergement web
+Shared Hosting,Hébergement partagé
+Dedicated Server,Serveur dédié
+VPS (Virtual Private Server),VPS (Serveur privé virtuel)
+Content Delivery Network,Réseau de diffusion de contenu
+Bandwidth Cap,Plafonnement de la bande passante
+Data Cap,Plafonnement des données
+Ping,Ping
+Traceroute,Traceroute
+IPConfig,IPConfig
+Ifconfig,Ifconfig
+Netstat,Netstat
+Task Manager,Gestionnaire des tâches
+Activity Monitor,Moniteur d'activité
+System Monitor,Moniteur système
+Command Prompt,Invite de commande
+PowerShell,PowerShell
+Bash,Bash
+Zsh,Zsh
+Fish Shell,Fish Shell
+Shell Script,Script shell
+Cron Job,Tâche Cron
+Daemon,Démon
+Service,Service
+Process,Processus
+Thread,Fil d'exécution
+Multithreading,Multithreading
+Multiprocessing,Multiprocessing
+Deadlock,Interblocage
+Race Condition,Condition de course
+Semaphore,Sémaphore
+Mutex,Mutex
+Compiler Optimization,Optimisation du compilateur
+Assembly Language,Langage d'assemblage
+Machine Code,Code machine
+Bytecode,Bytecode
+Just-In-Time Compilation,Compilation juste-à-temps
+Ahead-Of-Time Compilation,Compilation ahead-of-time
+Garbage Collection,Collecte de déchets
+Memory Leak,Fuite de mémoire
+Buffer Overflow,Débordement de tampon
+Stack Overflow (Error),Débordement de pile (Erreur)
+Heap (Memory),Heap (Mémoire)
+Stack (Memory),Pile (Mémoire)
+Recursion,Récursion
+Iteration,Itération
+Data Structure,Structure de données
+Sorting Algorithm,Algorithme de tri
+Search Algorithm,Algorithme de recherche
+Graph Algorithm,Algorithme de graphe
+Dynamic Programming,Programmation dynamique
+Greedy Algorithm,Algorithme glouton
+Divide and Conquer,Diviser pour régner
+Brute Force,Force brute
+Heuristic,Heuristique
+Regular Expression,Expression régulière
+Parser,Analyseur syntaxique
+Lexer,Lexer
+Abstract Syntax Tree,Arbre syntaxique abstrait
+Linker,Éditeur de liens
+Loader,Chargeur
+Kernel Module,Module du noyau
+Device Driver,Pilote de périphérique
+Interrupt,Interruption
+System Call,Appel système
+Real-Time Operating System,Système d'exploitation en temps réel
+Embedded System,Système embarqué
+Firmware Update,Mise à jour du micrologiciel
+Over-the-Air Update,Mise à jour à distance
+Side Loading,Chargement latéral
+Jailbreaking,Jailbreaking
+Rooting,Rooting
+Custom ROM,ROM personnalisée
+Bloatware,Bloatware
+Adware,Adware
+Spyware,Logiciel espion
+Keylogger,Enregistreur de frappe
+Botnet,Botnet
+DDoS Attack,Attaque DDoS
+Man-in-the-Middle Attack,Attaque de l'homme du milieu
+SQL Injection,Injection SQL
+Cross-Site Scripting (XSS),Script inter-sites (XSS)
+Cross-Site Request Forgery (CSRF),Falsification de requête inter-sites (CSRF)
+Security Patch,Correctif de sécurité
+Vulnerability,Vulnérabilité
+Exploit,Exploit
+Zero-Day Exploit,Exploit zero-day
+Security Audit,Audit de sécurité
+Penetration Testing,Tests d'intrusion
+Ethical Hacking,Hacking éthique
+Digital Forensics,Criminalistique numérique
+Sandbox,Bac à sable
+Honeypot,Pot de miel
+Firewall Policy,Politique de pare-feu
+Intrusion Detection System,Système de détection d'intrusion
+Intrusion Prevention System,Système de prévention d'intrusion
+Security Information and Event Management,Gestion des informations et des événements de sécurité
+Access Control List,Liste de contrôle d'accès
+Role-Based Access Control,Contrôle d'accès basé sur les rôles
+Principle of Least Privilege,Principe du moindre privilège
+Defense in Depth,Défense en profondeur
+Zero Trust Security,Sécurité à confiance zéro
+Biometric Authentication,Authentification biométrique
+Smart Card,Carte à puce
+Public Key Infrastructure,Infrastructure à clé publique
+Certificate Authority,Autorité de certification
+Digital Certificate,Certificat numérique
+End-to-End Encryption,Chiffrement de bout en bout
+Homomorphic Encryption,Chiffrement homomorphe
+Quantum Cryptography,Cryptographie quantique
+Steganography,Stéganographie
+Data Mining,Exploration de données
+Data Warehousing,Entreposage de données
+Data Lake,Lac de données
+ETL (Extract, Transform, Load),ETL (Extraction, Transformation, Chargement)
+Data Visualization,Visualisation de données
+Business Intelligence,Veille stratégique
+Predictive Analytics,Analyse prédictive
+Natural Language Processing,Traitement du langage naturel
+Computer Vision,Vision par ordinateur
+Robotics,Robotique
+Neural Network,Réseau neuronal
+Deep Learning,Apprentissage profond
+Reinforcement Learning,Apprentissage par renforcement
+Supervised Learning,Apprentissage supervisé
+Unsupervised Learning,Apprentissage non supervisé
+Transfer Learning,Apprentissage par transfert
+Generative Adversarial Network,Réseau antagoniste génératif
+Model Training,Entraînement de modèles
+Dataset,Jeu de données
+Feature Engineering,Ingénierie des fonctionnalités
+Overfitting,Surapprentissage
+Underfitting,Sous-apprentissage
+Hyperparameter Tuning,Réglage des hyperparamètres
+A/B Testing,Test A/B
+Web Scraping,Web scraping
+Data Cleansing,Nettoyage des données
+Data Wrangling,Préparation des données
+No-Code Platform,Plateforme sans code
+Low-Code Platform,Plateforme low-code
+Progressive Web App,Application web progressive
+Single-Page Application,Application à page unique
+Micro-frontend,Micro-frontend
+WebAssembly,WebAssembly
+GraphQL,GraphQL
+REST API,API REST
+SOAP API,API SOAP
+Webhook,Webhook
+Cron Tab,Table Cron

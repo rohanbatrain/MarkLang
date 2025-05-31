@@ -1,0 +1,460 @@
+word,translation
+Automation,ระบบอัตโนมัติ
+Linux,ลินุกซ์
+SSH,SSH
+OpenSSH,OpenSSH
+How-to,วิธีการ
+Comment,ความคิดเห็น
+Arch Linux,อาร์ชลินุกซ์
+Firewall,ไฟร์วอลล์
+Router,เราเตอร์
+Switch,สวิตช์
+Server,เซิร์ฟเวอร์
+Client,ไคลเอนต์
+Kernel,เคอร์เนล
+Terminal,เทอร์มินัล
+Command Line Interface,ส่วนต่อประสานบรรทัดคำสั่ง
+Graphical User Interface,ส่วนต่อประสานกราฟิกกับผู้ใช้
+Software,ซอฟต์แวร์
+Hardware,ฮาร์ดแวร์
+Firmware,เฟิร์มแวร์
+Middleware,มิดเดิลแวร์
+Application,แอปพลิเคชัน
+Program,โปรแกรม
+Code,โค้ด
+Script,สคริปต์
+Algorithm,อัลกอริทึม
+Database,ฐานข้อมูล
+Cloud Computing,คลาวด์คอมพิวติ้ง
+Virtualization,เวอร์ชวลไลเซชัน
+Containerization,คอนเทนเนอร์ไลเซชัน
+Docker,ด็อกเกอร์
+Kubernetes,คูเบอร์เนทีส
+API (Application Programming Interface),API (ส่วนต่อประสานโปรแกรมประยุกต์)
+SDK (Software Development Kit),SDK (ชุดพัฒนาซอฟต์แวร์)
+IDE (Integrated Development Environment),IDE (สภาพแวดล้อมการพัฒนาแบบบูรณาการ)
+Git,กิต
+GitHub,กิตฮับ
+Repository,ที่เก็บ
+Branch,สาขา
+Commit,คอมมิท
+Merge,ผสาน
+Pull Request,คำขอดึง
+Bug,บั๊ก
+Debug,ดีบั๊ก
+Cache,แคช
+Cookie,คุกกี้
+Plugin,ปลั๊กอิน
+Widget,วิดเจ็ต
+Framework,เฟรมเวิร์ก
+Library,ไลบรารี
+Module,โมดูล
+Domain Name System,ระบบชื่อโดเมน
+IP Address,ที่อยู่ IP
+URL (Uniform Resource Locator),URL (ตัวระบุแหล่งทรัพยากรสากล)
+HTTP (Hypertext Transfer Protocol),HTTP (เกณฑ์วิธีถ่ายโอนข้อความหลายมิติ)
+HTTPS (Hypertext Transfer Protocol Secure),HTTPS (เกณฑ์วิธีถ่ายโอนข้อความหลายมิติแบบปลอดภัย)
+SSL (Secure Sockets Layer),SSL (Secure Sockets Layer)
+TLS (Transport Layer Security),TLS (Transport Layer Security)
+Encryption,การเข้ารหัส
+Decryption,การถอดรหัส
+Authentication,การพิสูจน์ตัวตน
+Authorization,การอนุญาต
+Cybersecurity,ความปลอดภัยทางไซเบอร์
+Malware,มัลแวร์
+Virus,ไวรัส
+Trojan,โทรจัน
+Ransomware,แรนซัมแวร์
+Phishing,ฟิชชิง
+Firewall,ไฟร์วอลล์
+VPN (Virtual Private Network),VPN (เครือข่ายส่วนตัวเสมือน)
+Backup,สำรองข้อมูล
+Restore,กู้คืน
+Big Data,บิ๊กดาต้า
+Machine Learning,การเรียนรู้ของเครื่อง
+Artificial Intelligence,ปัญญาประดิษฐ์
+Internet of Things,อินเทอร์เน็ตของสรรพสิ่ง
+Blockchain,บล็อกเชน
+Cryptocurrency,คริปโตเคอร์เรนซี
+Open Source,โอเพนซอร์ส
+Proprietary Software,ซอฟต์แวร์กรรมสิทธิ์
+User,ผู้ใช้
+Administrator,ผู้ดูแลระบบ
+Developer,นักพัฒนา
+Engineer,วิศวกร
+Syntax,ไวยากรณ์
+Compiler,คอมไพเลอร์
+Interpreter,อินเทอร์พรีเตอร์
+Object-Oriented Programming,การเขียนโปรแกรมเชิงวัตถุ
+Functional Programming,การเขียนโปรแกรมเชิงฟังก์ชัน
+Frontend,ฟรอนต์เอนด์
+Backend,แบ็กเอนด์
+Full Stack,ฟูลสแต็ก
+DevOps,เดฟออปส์
+Agile,อะไจล์
+Scrum,สกรัม
+Waterfall Model,โมเดลน้ำตก
+Pixel,พิกเซล
+Resolution,ความละเอียด
+Bandwidth,แบนด์วิดท์
+Latency,ความหน่วง
+Driver,ไดรเวอร์
+Operating System,ระบบปฏิบัติการ
+BIOS,ไบออส
+UEFI,UEFI
+Bootloader,บูตโหลดเดอร์
+Partition,พาร์ติชัน
+File System,ระบบไฟล์
+Directory,ไดเรกทอรี
+File,ไฟล์
+Folder,โฟลเดอร์
+Proxy Server,พร็อกซีเซิร์ฟเวอร์
+Load Balancer,โหลดบาลานเซอร์
+Data Center,ศูนย์ข้อมูล
+Microservices,ไมโครเซอร์วิส
+Monolith,โมโนลิธ
+Stack Overflow,Stack Overflow
+Boolean,บูลีน
+Integer,จำนวนเต็ม
+String,สตริง
+Array,อะเรย์
+Variable,ตัวแปร
+Function,ฟังก์ชัน
+Class,คลาส
+Object,วัตถุ
+Method,เมธอด
+Parameter,พารามิเตอร์
+Argument,อาร์กิวเมนต์
+Loop,ลูป
+Conditional Statement,คำสั่งเงื่อนไข
+Pointer,พอยน์เตอร์
+Memory,หน่วยความจำ
+CPU (Central Processing Unit),CPU (หน่วยประมวลผลกลาง)
+GPU (Graphics Processing Unit),GPU (หน่วยประมวลผลกราฟิก)
+RAM (Random Access Memory),RAM (หน่วยความจำเข้าถึงโดยสุ่ม)
+ROM (Read-Only Memory),ROM (หน่วยความจำอ่านอย่างเดียว)
+SSD (Solid State Drive),SSD (โซลิดสเตตไดรฟ์)
+HDD (Hard Disk Drive),HDD (ฮาร์ดดิสก์ไดรฟ์)
+Motherboard,เมนบอร์ด
+Power Supply,แหล่งจ่ายไฟ
+Network Interface Card,การ์ดอินเทอร์เฟซเครือข่าย
+Wi-Fi,Wi-Fi
+Bluetooth,บลูทูธ
+USB (Universal Serial Bus),USB (Universal Serial Bus)
+HDMI (High-Definition Multimedia Interface),HDMI (High-Definition Multimedia Interface)
+Ethernet,อีเทอร์เน็ต
+Packet,แพ็กเก็ต
+Protocol,โพรโทคอล
+Port,พอร์ต
+Firewall Rule,กฎไฟร์วอลล์
+Subnet Mask,ซับเน็ตมาสก์
+Gateway,เกตเวย์
+DNS Server,เซิร์ฟเวอร์ DNS
+DHCP (Dynamic Host Configuration Protocol),DHCP (Dynamic Host Configuration Protocol)
+Virtual Machine,เครื่องเสมือน
+Hypervisor,ไฮเปอร์ไวเซอร์
+Emulator,อีมูเลเตอร์
+Simulator,ซิมูเลเตอร์
+Pixel Density,ความหนาแน่นพิกเซล
+Refresh Rate,อัตรารีเฟรช
+Responsive Design,การออกแบบที่ตอบสนอง
+User Experience (UX),ประสบการณ์ผู้ใช้ (UX)
+User Interface (UI),ส่วนต่อประสานผู้ใช้ (UI)
+Dark Mode,โหมดมืด
+Light Mode,โหมดสว่าง
+Beta Version,เวอร์ชันเบต้า
+Alpha Version,เวอร์ชันอัลฟ่า
+Stable Release,เวอร์ชันเสถียร
+Patch,แพตช์
+Update,อัปเดต
+Upgrade,อัปเกรด
+Downgrade,ดาวน์เกรด
+Legacy System,ระบบดั้งเดิม
+Mainframe,เมนเฟรม
+Supercomputer,ซูเปอร์คอมพิวเตอร์
+Quantum Computing,ควอนตัมคอมพิวติ้ง
+Augmented Reality,ความจริงเสริม
+Virtual Reality,ความจริงเสมือน
+Mixed Reality,ความจริงผสม
+E-commerce,อีคอมเมิร์ซ
+SaaS (Software as a Service),SaaS (ซอฟต์แวร์ในฐานะบริการ)
+PaaS (Platform as a Service),PaaS (แพลตฟอร์มในฐานะบริการ)
+IaaS (Infrastructure as a Service),IaaS (โครงสร้างพื้นฐานในฐานะบริการ)
+Session,เซสชัน
+Token,โทเค็น
+Metadata,เมทาดาต้า
+Stack,สแตก
+Queue,คิว
+Tree,ต้นไม้
+Graph,กราฟ
+Node,โหนด
+Edge,เอดจ์
+Byte,ไบต์
+Kilobyte,กิโลไบต์
+Megabyte,เมกะไบต์
+Gigabyte,กิกะไบต์
+Terabyte,เทราไบต์
+Petabyte,เพตะไบต์
+Bit,บิต
+Boolean Logic,ตรรกะบูลีน
+Binary,ไบนารี
+Hexadecimal,เลขฐานสิบหก
+ASCII,แอสกี
+Unicode,ยูนิโค้ด
+UTF-8,ยูทีเอฟ-8
+Markdown,มาร์กดาวน์
+JSON,เจสัน
+XML,เอ็กซ์เอ็มแอล
+YAML,ยามล์
+CSV (Comma-Separated Values),CSV (ค่าที่คั่นด้วยจุลภาค)
+SQL (Structured Query Language),SQL (ภาษาสอบถามเชิงโครงสร้าง)
+NoSQL,NoSQL
+LAMP Stack,LAMP สแต็ก
+MEAN Stack,MEAN สแต็ก
+MERN Stack,MERN สแต็ก
+Serverless,เซิร์ฟเวอร์เลส
+Edge Computing,เอดจ์คอมพิวติ้ง
+Digital Signature,ลายเซ็นดิจิทัล
+Two-Factor Authentication,การยืนยันตัวตนแบบสองปัจจัย
+Multi-Factor Authentication,การยืนยันตัวตนแบบหลายปัจจัย
+Firewall Log,บันทึกไฟร์วอลล์
+System Log,บันทึกระบบ
+Error Message,ข้อความแสดงข้อผิดพลาด
+Warning Message,ข้อความเตือน
+Notification,การแจ้งเตือน
+Dashboard,แดชบอร์ด
+Configuration,การกำหนดค่า
+Deployment,การปรับใช้
+Scalability,ความสามารถในการปรับขนาด
+Reliability,ความน่าเชื่อถือ
+Availability,ความพร้อมใช้งาน
+Performance,ประสิทธิภาพ
+Latency,ความหน่วง
+Throughput,ปริมาณงาน
+Benchmark,เกณฑ์มาตรฐาน
+Profiling,การสร้างโปรไฟล์
+Optimization,การเพิ่มประสิทธิภาพ
+Refactoring,การปรับโครงสร้างโค้ด
+Version Control,การควบคุมเวอร์ชัน
+Continuous Integration,การรวมอย่างต่อเนื่อง
+Continuous Delivery,การส่งมอบอย่างต่อเนื่อง
+Continuous Deployment,การปรับใช้อย่างต่อเนื่อง
+Testing,การทดสอบ
+Unit Test,การทดสอบหน่วย
+Integration Test,การทดสอบการรวมระบบ
+End-to-End Test,การทดสอบแบบเอนด์ทูเอนด์
+Acceptance Test,การทดสอบการยอมรับ
+Regression Test,การทดสอบการถดถอย
+Load Test,การทดสอบโหลด
+Stress Test,การทดสอบความเครียด
+Penetration Test,การทดสอบการเจาะระบบ
+White Box Testing,การทดสอบกล่องขาว
+Black Box Testing,การทดสอบกล่องดำ
+Gray Box Testing,การทดสอบกล่องเทา
+Framework Laptop,แล็ปท็อปเฟรมเวิร์ก
+Raspberry Pi,ราสเบอร์รี่พาย
+Arduino,อาร์ดูอิโน
+Web Browser,เว็บเบราว์เซอร์
+Search Engine,เครื่องมือค้นหา
+Social Media,โซเชียลมีเดีย
+Blog,บล็อก
+Podcast,พอดคาสต์
+Webinar,การสัมมนาผ่านเว็บ
+Streaming,การสตรีม
+Download,ดาวน์โหลด
+Upload,อัปโหลด
+Screenshot,ภาพหน้าจอ
+Screencast,บันทึกหน้าจอ
+Drag and Drop,ลากและวาง
+Copy Paste,คัดลอกและวาง
+Cut Paste,ตัดและวาง
+Undo,เลิกทำ
+Redo,ทำซ้ำ
+Save,บันทึก
+Open,เปิด
+Print,พิมพ์
+Exit,ออก
+Login,เข้าสู่ระบบ
+Logout,ออกจากระบบ
+Sign up,ลงทะเบียน
+Password,รหัสผ่าน
+Username,ชื่อผู้ใช้
+Email,อีเมล
+Spam,สแปม
+Junk Mail,จดหมายขยะ
+Inbox,กล่องจดหมายเข้า
+Outbox,กล่องจดหมายออก
+Draft,ฉบับร่าง
+Archive,จดหมายเหตุ
+Trash,ถังขยะ
+Recycle Bin,ถังรีไซเคิล
+Desktop,เดสก์ท็อป
+Icon,ไอคอน
+Shortcut,ทางลัด
+Taskbar,แถบงาน
+Menu,เมนู
+Window,หน้าต่าง
+Tab,แท็บ
+Toolbar,แถบเครื่องมือ
+Scrollbar,แถบเลื่อน
+Hyperlink,ไฮเปอร์ลิงก์
+Bookmark,บุ๊กมาร์ก
+Browser Extension,ส่วนขยายเบราว์เซอร์
+Add-on,ส่วนเสริม
+Dark Web,ดาร์กเว็บ
+Deep Web,ดีปเว็บ
+Surface Web,เซอร์เฟซเว็บ
+Intranet,อินทราเน็ต
+Extranet,เอ็กซ์ทราเน็ต
+Peer-to-Peer,เพียร์ทูเพียร์
+Client-Server Model,โมเดลไคลเอนต์-เซิร์ฟเวอร์
+Domain Registrar,ผู้รับจดทะเบียนโดเมน
+Web Hosting,เว็บโฮสติ้ง
+Shared Hosting,แชร์โฮสติ้ง
+Dedicated Server,เซิร์ฟเวอร์เฉพาะ
+VPS (Virtual Private Server),VPS (Virtual Private Server)
+Content Delivery Network,เครือข่ายนำส่งเนื้อหา
+Bandwidth Cap,การจำกัดแบนด์วิดท์
+Data Cap,การจำกัดข้อมูล
+Ping,ปิง
+Traceroute,เทรเซอร์รูท
+IPConfig,IPConfig
+Ifconfig,Ifconfig
+Netstat,เน็ตสแตท
+Task Manager,ตัวจัดการงาน
+Activity Monitor,ตัวตรวจสอบกิจกรรม
+System Monitor,ตัวตรวจสอบระบบ
+Command Prompt,พร้อมต์คำสั่ง
+PowerShell,พาวเวอร์เชลล์
+Bash,แบช
+Zsh,Zsh
+Fish Shell,ฟิชเชลล์
+Shell Script,เชลล์สคริปต์
+Cron Job,ครอนจ็อบ
+Daemon,เดมอน
+Service,บริการ
+Process,กระบวนการ
+Thread,เธรด
+Multithreading,มัลติเธรดดิ้ง
+Multiprocessing,มัลติโพรเซสซิ่ง
+Deadlock,เดดล็อก
+Race Condition,สภาวะการแข่งขัน
+Semaphore,เซมาฟอร์
+Mutex,มิวเท็กซ์
+Compiler Optimization,การเพิ่มประสิทธิภาพคอมไพเลอร์
+Assembly Language,ภาษาแอสเซมบลี
+Machine Code,รหัสเครื่อง
+Bytecode,ไบต์โค้ด
+Just-In-Time Compilation,การคอมไพล์แบบทันเวลา
+Ahead-Of-Time Compilation,การคอมไพล์ล่วงหน้า
+Garbage Collection,การรวบรวมขยะ
+Memory Leak,หน่วยความจำรั่วไหล
+Buffer Overflow,บัฟเฟอร์โอเวอร์โฟลว์
+Stack Overflow (Error),Stack Overflow (ข้อผิดพลาด)
+Heap (Memory),ฮีป (หน่วยความจำ)
+Stack (Memory),สแตก (หน่วยความจำ)
+Recursion,การเรียกซ้ำ
+Iteration,การวนซ้ำ
+Data Structure,โครงสร้างข้อมูล
+Sorting Algorithm,อัลกอริทึมการเรียงลำดับ
+Search Algorithm,อัลกอริทึมการค้นหา
+Graph Algorithm,อัลกอริทึมกราฟ
+Dynamic Programming,การเขียนโปรแกรมเชิงพลวัต
+Greedy Algorithm,อัลกอริทึมละโมบ
+Divide and Conquer,แบ่งและเอาชนะ
+Brute Force,การโจมตีแบบเดาสุ่ม
+Heuristic,ฮิวริสติก
+Regular Expression,นิพจน์ปรกติ
+Parser,ตัวแยกวิเคราะห์
+Lexer,เลกเซอร์
+Abstract Syntax Tree,โครงสร้างต้นไม้ไวยากรณ์นามธรรม
+Linker,ตัวเชื่อมโยง
+Loader,ตัวโหลด
+Kernel Module,โมดูลเคอร์เนล
+Device Driver,ไดรเวอร์อุปกรณ์
+Interrupt,อินเตอร์รัปต์
+System Call,การเรียกใช้ระบบ
+Real-Time Operating System,ระบบปฏิบัติการแบบเรียลไทม์
+Embedded System,ระบบฝังตัว
+Firmware Update,การอัปเดตเฟิร์มแวร์
+Over-the-Air Update,การอัปเดตผ่านอากาศ
+Side Loading,การโหลดจากภายนอก
+Jailbreaking,เจลเบรกกิ้ง
+Rooting,รูทติ้ง
+Custom ROM,รอมแบบกำหนดเอง
+Bloatware,บลอตแวร์
+Adware,แอดแวร์
+Spyware,สปายแวร์
+Keylogger,คีย์ล็อกเกอร์
+Botnet,บอตเน็ต
+DDoS Attack,การโจมตีแบบ DDoS
+Man-in-the-Middle Attack,การโจมตีแบบคนกลาง
+SQL Injection,การฉีด SQL
+Cross-Site Scripting (XSS),Cross-Site Scripting (XSS)
+Cross-Site Request Forgery (CSRF),Cross-Site Request Forgery (CSRF)
+Security Patch,แพตช์ความปลอดภัย
+Vulnerability,ช่องโหว่
+Exploit,ช่องทางโจมตี
+Zero-Day Exploit,ช่องทางโจมตีซีโร่เดย์
+Security Audit,การตรวจสอบความปลอดภัย
+Penetration Testing,การทดสอบการเจาะระบบ
+Ethical Hacking,การแฮกเชิงจริยธรรม
+Digital Forensics,นิติวิทยาศาสตร์ดิจิทัล
+Sandbox,แซนด์บ็อกซ์
+Honeypot,ฮันนีพอต
+Firewall Policy,นโยบายไฟร์วอลล์
+Intrusion Detection System,ระบบตรวจจับการบุกรุก
+Intrusion Prevention System,ระบบป้องกันการบุกรุก
+Security Information and Event Management,การจัดการข้อมูลและเหตุการณ์ด้านความปลอดภัย
+Access Control List,รายการควบคุมการเข้าถึง
+Role-Based Access Control,การควบคุมการเข้าถึงตามบทบาท
+Principle of Least Privilege,หลักการของสิทธิ์ขั้นต่ำ
+Defense in Depth,การป้องกันเชิงลึก
+Zero Trust Security,ความปลอดภัยแบบ Zero Trust
+Biometric Authentication,การพิสูจน์ตัวตนด้วยไบโอเมตริกซ์
+Smart Card,สมาร์ทการ์ด
+Public Key Infrastructure,โครงสร้างพื้นฐานคีย์สาธารณะ
+Certificate Authority,หน่วยงานออกใบรับรอง
+Digital Certificate,ใบรับรองดิจิทัล
+End-to-End Encryption,การเข้ารหัสแบบเอนด์ทูเอนด์
+Homomorphic Encryption,การเข้ารหัสแบบโฮโมมอร์ฟิก
+Quantum Cryptography,การเข้ารหัสควอนตัม
+Steganography,สเตกาโนกราฟี
+Data Mining,การทำเหมืองข้อมูล
+Data Warehousing,คลังข้อมูล
+Data Lake,ดาต้าเลค
+ETL (Extract, Transform, Load),ETL (Extract, Transform, Load)
+Data Visualization,การแสดงภาพข้อมูล
+Business Intelligence,ธุรกิจอัจฉริยะ
+Predictive Analytics,การวิเคราะห์เชิงพยากรณ์
+Natural Language Processing,การประมวลผลภาษาธรรมชาติ
+Computer Vision,คอมพิวเตอร์วิทัศน์
+Robotics,หุ่นยนต์
+Neural Network,โครงข่ายประสาทเทียม
+Deep Learning,การเรียนรู้เชิงลึก
+Reinforcement Learning,การเรียนรู้แบบเสริมกำลัง
+Supervised Learning,การเรียนรู้แบบมีผู้สอน
+Unsupervised Learning,การเรียนรู้แบบไม่มีผู้สอน
+Transfer Learning,การเรียนรู้แบบถ่ายโอน
+Generative Adversarial Network,โครงข่ายประสาทเทียมสร้างเชิงแข่งขัน
+Model Training,การฝึกโมเดล
+Dataset,ชุดข้อมูล
+Feature Engineering,การสร้างฟีเจอร์
+Overfitting,โอเวอร์ฟิตติง
+Underfitting,อันเดอร์ฟิตติง
+Hyperparameter Tuning,การปรับจูนไฮเปอร์พารามิเตอร์
+A/B Testing,การทดสอบ A/B
+Web Scraping,การดึงข้อมูลจากเว็บ
+Data Cleansing,การทำความสะอาดข้อมูล
+Data Wrangling,การจัดการข้อมูล
+No-Code Platform,แพลตฟอร์มไร้โค้ด
+Low-Code Platform,แพลตฟอร์มโลว์โค้ด
+Progressive Web App,Progressive Web App
+Single-Page Application,Single-Page Application
+Micro-frontend,ไมโครฟรอนต์เอนด์
+WebAssembly,เว็บแอสเซมบลี
+GraphQL,กราฟคิวแอล
+REST API,REST API
+SOAP API,SOAP API
+Webhook,เว็บฮุก
+Cron Tab,ครอนแท็บ

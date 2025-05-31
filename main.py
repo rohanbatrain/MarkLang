@@ -2,10 +2,10 @@ import frontmatter
 import requests
 import os
 from googletrans import Translator # type: ignore
-from libretranslatepy import LibreTranslateAPI
 import asyncio
 import argparse
 import csv
+import logging
 
 # Global language settings
 SOURCE_LANG = "en"  # English
@@ -58,8 +58,6 @@ RENDER_KEYS = {
 
 # Initialize the Google Translator
 translator = Translator()
-# Initialize LibreTranslate
-libre = LibreTranslateAPI()
 
 LANGUAGE_NAMES = {
     "en": "English",
@@ -83,8 +81,8 @@ def replace_double_with_single_quotes(text: str) -> str:
 def replace_mixed_quotes(text: str) -> str:
     return text.replace("'", "\"").replace("'", "\"")
 
-def clean_frontmatter_value(value):
-    # Replace "' or '" with just "
+def clean_frontmatter_value(value: str) -> str:
+    """Replace "' or '" with just " in frontmatter values."""
     value = value.replace("\"'", "\"").replace("'\"", "\"")
     return value
 
@@ -137,7 +135,7 @@ def translate_title(
         print(f"[ERROR] Title translation failed: {e}")
         return f"[Error] {e}"
 
-def validate_frontmatter(file_path):
+def validate_frontmatter(file_path: str) -> bool:
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
@@ -253,13 +251,14 @@ def transliterate_to_script(text: str, lang_code: str) -> str:
 
 # Load custom dictionary from CSV
 CUSTOM_DICT = {}
-def load_custom_dictionary(lang_code, base_path="translations"):
+def load_custom_dictionary(lang_code: str, base_path: str = "translations") -> None:
+    """Load a custom dictionary for the target language from a CSV file."""
     global CUSTOM_DICT
     CUSTOM_DICT = {}
     csv_path = os.path.join(base_path, f"translations_{lang_code}.csv")
-    print(f"[LOG] Attempting to load custom dictionary: {csv_path}")
+    logging.info(f"Attempting to load custom dictionary: {csv_path}")
     if not os.path.exists(csv_path):
-        print(f"[INFO] Custom dictionary CSV '{csv_path}' not found. Skipping.")
+        logging.info(f"Custom dictionary CSV '{csv_path}' not found. Skipping.")
         return
     with open(csv_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -267,98 +266,89 @@ def load_custom_dictionary(lang_code, base_path="translations"):
             word = row['word'].strip()
             translation = row['translation'].strip()
             CUSTOM_DICT[word.lower()] = translation
-    print(f"[INFO] Loaded {len(CUSTOM_DICT)} custom dictionary entries from {csv_path}.")
+    logging.info(f"Loaded {len(CUSTOM_DICT)} custom dictionary entries from {csv_path}.")
 
-async def translate_single_word(translator, word, target_lang):
-    # Always check custom dictionary first
+async def translate_single_word(translator, word: str, target_lang: str) -> str:
+    """Translate a single word using custom dictionary, Googletrans, or offline transliteration."""
     custom = CUSTOM_DICT.get(word.lower())
     if custom:
-        print(f"[INFO] Using custom dictionary translation for '{word}' in '{target_lang}': {custom} (from translations_{target_lang}.csv)")
+        logging.info(f"Using custom dictionary translation for '{word}' in '{target_lang}': {custom} (from translations_{target_lang}.csv)")
         return custom
     try:
         translation = await translator.translate(word, dest=target_lang)
-        # If Googletrans fails (returns the same word), use offline transliteration fallback
         if translation.text.strip().lower() == word.strip().lower():
-            print(f"[WARN] Googletrans did not translate '{word}'. Using offline transliteration fallback.")
+            logging.warning(f"Googletrans did not translate '{word}'. Using offline transliteration fallback.")
             return transliterate_to_script(word, target_lang)
         return translation.text
     except Exception as e:
-        print(f"[WARN] Googletrans failed for '{word}': {e}. Using offline transliteration fallback.")
+        logging.warning(f"Googletrans failed for '{word}': {e}. Using offline transliteration fallback.")
         return transliterate_to_script(word, target_lang)
 
-async def translate_array_with_googletrans(translator, array: list, target_lang: str = TARGET_LANG) -> list:
-    translated_array = []
+async def translate_array_with_googletrans(translator, array: list, target_lang: str) -> list:
+    """Translate an array of words using translate_single_word."""
     tasks = [translate_single_word(translator, word, target_lang) for word in array]
-    results = await asyncio.gather(*tasks)
-    translated_array.extend(results)
-    return translated_array
+    return await asyncio.gather(*tasks)
 
-def process_markdown(file_path, output_path="output.md"):
-    print(f"[INFO] Starting processing of markdown file: {file_path}")
-
-    # Load original markdown file
+def process_markdown(file_path: str, output_path: str = "output.md") -> None:
+    """Process a markdown file: translate frontmatter and content, write to output."""
+    logging.info(f"Starting processing of markdown file: {file_path}")
     try:
         post = frontmatter.load(file_path)
-        print("[INFO] Successfully loaded markdown file.")
+        logging.info("Successfully loaded markdown file.")
     except Exception as e:
-        print(f"[ERROR] Failed to load markdown file: {e}")
+        logging.error(f"Failed to load markdown file: {e}")
         return
 
     async def main():
-        print("[LOG] Entered async main() for processing.")
+        logging.info("Entered async main() for processing.")
         translated_title = ""
         if RENDER_KEYS["title"]:
             original_title = post.get("title")
-            print(f"[LOG] Original title: {original_title}")
+            logging.info(f"Original title: {original_title}")
             if not original_title:
-                print("[ERROR] No title found in frontmatter.")
+                logging.error("No title found in frontmatter.")
                 return
-
-            print("[INFO] Translating title...")
+            logging.info("Translating title...")
             translated_title = translate_title(original_title, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
-            print(f"[INFO] Title translated: {translated_title}")
+            logging.info(f"Title translated: {translated_title}")
 
         translated_description = ""
         if RENDER_KEYS["description"]:
             original_description = post.get("description")
-            print(f"[LOG] Original description: {original_description}")
+            logging.info(f"Original description: {original_description}")
             if original_description:
-                print("[INFO] Translating description...")
+                logging.info("Translating description...")
                 translated_description = translate_description(original_description, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
-                print(f"[INFO] Description translated: {translated_description}")
+                logging.info(f"Description translated: {translated_description}")
 
         translated_tags = []
         if RENDER_KEYS["tags"]:
             original_tags = post.get("tags", [])
-            print(f"[LOG] Original tags: {original_tags} (type: {type(original_tags)})")
-            # Ensure tags is a list
+            logging.info(f"Original tags: {original_tags} (type: {type(original_tags)})")
             if isinstance(original_tags, str):
                 original_tags = [tag.strip() for tag in original_tags.split(",") if tag.strip()]
             if original_tags:
-                print(f"[INFO] Translating tags from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
-                translated_tags = await translate_array_with_googletrans(translator, original_tags)
-                # Ensure transliteration fallback is applied to all
+                logging.info(f"Translating tags from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
+                translated_tags = await translate_array_with_googletrans(translator, original_tags, TARGET_LANG)
                 translated_tags = [transliterate_to_script(tag, TARGET_LANG) for tag in translated_tags]
-                print(f"[INFO] Tags translated: {translated_tags}")
+                logging.info(f"Tags translated: {translated_tags}")
 
         translated_categories = []
         if RENDER_KEYS["categories"]:
             original_categories = post.get("categories", [])
-            print(f"[LOG] Original categories: {original_categories} (type: {type(original_categories)})")
-            # Ensure categories is a list
+            logging.info(f"Original categories: {original_categories} (type: {type(original_categories)})")
             if isinstance(original_categories, str):
                 original_categories = [cat.strip() for cat in original_categories.split(",") if cat.strip()]
             if original_categories:
-                print(f"[INFO] Translating categories from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
-                translated_categories = await translate_array_with_googletrans(translator, original_categories)
-                # Ensure transliteration fallback is applied to all
+                logging.info(f"Translating categories from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
+                translated_categories = await translate_array_with_googletrans(translator, original_categories, TARGET_LANG)
                 translated_categories = [transliterate_to_script(cat, TARGET_LANG) for cat in translated_categories]
-                print(f"[INFO] Categories translated: {translated_categories}")
+                logging.info(f"Categories translated: {translated_categories}")
 
         date = post.get("date", "")
         draft = post.get("draft", "")
 
-        print("[INFO] Creating new frontmatter...")
+        logging.info("Creating new frontmatter...")
         new_metadata = {
             "title": f'"{translated_title}"' if RENDER_KEYS["title"] else None,
             "description": f'"{translated_description}"' if RENDER_KEYS["description"] else None,
@@ -367,48 +357,51 @@ def process_markdown(file_path, output_path="output.md"):
             "date": date if RENDER_KEYS["date"] else None,
             "draft": draft if RENDER_KEYS["draft"] else None
         }
-        print(f"[LOG] New metadata for frontmatter: {new_metadata}")
+        logging.info(f"New metadata for frontmatter: {new_metadata}")
         new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
         new_frontmatter = clean_frontmatter_value(new_frontmatter)
-        print(f"[LOG] New frontmatter generated:\n{new_frontmatter}")
+        logging.info(f"New frontmatter generated:\n{new_frontmatter}")
 
         try:
             with open(output_path, "w", encoding="utf-8") as f:
-                print(f"[LOG] Writing frontmatter to {output_path}")
+                logging.info(f"Writing frontmatter to {output_path}")
                 f.write(new_frontmatter)
-                # Translate the AI generated message
                 ai_message_en = AI_NOTIFICATION_MSG.format(
                     source_lang=LANGUAGE_NAMES[SOURCE_LANG],
                     target_lang=LANGUAGE_NAMES[TARGET_LANG]
                 )
-                print(f"[LOG] Translating AI notification message: {ai_message_en}")
+                logging.info(f"Translating AI notification message: {ai_message_en}")
                 ai_message_translated = translate_content(ai_message_en, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
                 ai_message_translated = clean_special_quotes(ai_message_translated)
-                print(f"[LOG] Writing AI notification message: {ai_message_translated}")
+                logging.info(f"Writing AI notification message: {ai_message_translated}")
                 f.write(f"\n{ai_message_translated}\n")
-                # Get markdown content (without frontmatter)
                 markdown_content = post.content
-                print(f"[LOG] Translating markdown content (first 100 chars): {markdown_content[:100]}... (truncated)")
+                logging.info(f"Translating markdown content (first 100 chars): {markdown_content[:100]}... (truncated)")
                 translated_markdown = translate_content(markdown_content, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
                 translated_markdown = clean_special_quotes(translated_markdown)
-                print(f"[LOG] Writing translated markdown content (first 100 chars): {translated_markdown[:100]}... (truncated)")
+                logging.info(f"Writing translated markdown content (first 100 chars): {translated_markdown[:100]}... (truncated)")
                 f.write(f"\n{translated_markdown}\n")
-            print(f"[INFO] Successfully wrote translated content to: {output_path}")
+            logging.info(f"Successfully wrote translated content to: {output_path}")
         except Exception as e:
-            print(f"[ERROR] Failed to write output file: {e}")
+            logging.error(f"Failed to write output file: {e}")
             return
 
-        print("[INFO] Validating frontmatter...")
+        logging.info("Validating frontmatter...")
         if not validate_frontmatter(output_path):
-            print("[ERROR] Invalid frontmatter. Deleting output file and retrying.")
+            logging.error("Invalid frontmatter. Deleting output file and retrying.")
             os.remove(output_path)
-            await main() # Call main again if validation fails
+            await main()
         else:
-            print("[INFO] Frontmatter validation successful.")
+            logging.info("Frontmatter validation successful.")
 
     asyncio.run(main())
 
-def main_cli():
+def validate_language_code(lang_code: str) -> bool:
+    """Check if the language code is supported."""
+    return lang_code in LANGUAGE_NAMES
+
+def main_cli() -> None:
+    """Main CLI entry point for MarkLang translation script."""
     parser = argparse.ArgumentParser(description="Translate a markdown file with frontmatter to a target language.")
     parser.add_argument("input_file", type=str, help="Path to the input markdown file (with frontmatter)")
     parser.add_argument("target_lang", type=str, help="Target language code (e.g., fr, de, hi, etc.)")
@@ -416,21 +409,32 @@ def main_cli():
     parser.add_argument("--model", type=str, default="llama3.2:3b", help="Translation model to use (default: llama3.2:3b)")
     args = parser.parse_args()
 
-    # Set globals before any function uses them
     global SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL
     SOURCE_LANG = args.source_lang
     TARGET_LANG = args.target_lang
     TRANSLATION_MODEL = args.model
 
+    # Language code validation
+    if not validate_language_code(SOURCE_LANG):
+        print(f"[ERROR] Unsupported source language code: {SOURCE_LANG}")
+        print(f"Supported codes: {list(LANGUAGE_NAMES.keys())}")
+        exit(1)
+    if not validate_language_code(TARGET_LANG):
+        print(f"[ERROR] Unsupported target language code: {TARGET_LANG}")
+        print(f"Supported codes: {list(LANGUAGE_NAMES.keys())}")
+        exit(1)
+
     input_file = args.input_file
-    # Replace source language dir with target language dir in output path
     output_file = input_file.replace(f"{SOURCE_LANG}/", f"{TARGET_LANG}/")
     output_dir = os.path.dirname(output_file)
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
-    # Load only the relevant language dictionary
     load_custom_dictionary(TARGET_LANG)
-    process_markdown(input_file, output_file)
+    try:
+        process_markdown(input_file, output_file)
+    except KeyboardInterrupt:
+        print("\n[INFO] Translation interrupted by user. Exiting gracefully.")
+        exit(0)
 
 if __name__ == "__main__":
     main_cli()
