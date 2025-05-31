@@ -289,6 +289,14 @@ async def translate_array_with_googletrans(translator, array: list, target_lang:
     tasks = [translate_single_word(translator, word, target_lang) for word in array]
     return await asyncio.gather(*tasks)
 
+async def translate_author_with_transliteration(translator, author: str, target_lang: str) -> str:
+    """Translates and transliterates the author field if needed."""
+    if not author:
+        return author
+    # Try custom dictionary or Googletrans, then transliterate if needed
+    translated = await translate_single_word(translator, author, target_lang)
+    return transliterate_to_script(translated, target_lang)
+
 def process_markdown(file_path: str, output_path: str = "output.md") -> None:
     """Process a markdown file: translate frontmatter and content, write to output."""
     logging.info(f"Starting processing of markdown file: {file_path}")
@@ -348,6 +356,15 @@ def process_markdown(file_path: str, output_path: str = "output.md") -> None:
         date = post.get("date", "")
         draft = post.get("draft", "")
 
+        translated_author = ""
+        if RENDER_KEYS.get("author"):
+            original_author = post.get("author", "")
+            logging.info(f"Original author: {original_author}")
+            if original_author:
+                logging.info("Transliterating author...")
+                translated_author = await translate_author_with_transliteration(translator, original_author, TARGET_LANG)
+                logging.info(f"Author transliterated: {translated_author}")
+
         logging.info("Creating new frontmatter...")
         new_metadata = {
             "title": f'"{translated_title}"' if RENDER_KEYS["title"] else None,
@@ -355,7 +372,8 @@ def process_markdown(file_path: str, output_path: str = "output.md") -> None:
             "tags": translated_tags if RENDER_KEYS["tags"] else None,
             "categories": translated_categories if RENDER_KEYS["categories"] else None,
             "date": date if RENDER_KEYS["date"] else None,
-            "draft": draft if RENDER_KEYS["draft"] else None
+            "draft": draft if RENDER_KEYS["draft"] else None,
+            "author": f'"{translated_author}"' if RENDER_KEYS.get("author") and translated_author else None
         }
         logging.info(f"New metadata for frontmatter: {new_metadata}")
         new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"

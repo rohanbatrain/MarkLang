@@ -1,6 +1,7 @@
-googletrans==4.0.0rc1
-frontmatter
+googletrans
+python-frontmatter
 requests
 indic-transliteration
 aksharamukha
-# libretranslatepy
+urllib3
+six
