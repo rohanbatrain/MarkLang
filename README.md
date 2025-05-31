@@ -22,7 +22,7 @@ MarkLang is a robust, production-ready CLI tool for translating Markdown blog po
 
 1. Clone the repository:
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/rohanbatrain/MarkLang
    cd MarkLang
    ```
 2. Install dependencies:
