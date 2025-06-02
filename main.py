@@ -11,7 +11,7 @@ import logging
 
 # Translation model and API settings
 TRANSLATION_MODEL = "llama3.2"
-TRANSLATION_API_URL = "http://0.0.0.0:1024/api/generate"
+TRANSLATION_API_URL = "http://localhost:1024/api/generate"
 
 # Update prompts to include full language names with codes
 TITLE_TRANSLATION_PROMPT = (
