@@ -49,6 +49,7 @@ CONTENT_TRANSLATION_PROMPT = (
 RENDER_KEYS = {
     "title": True,
     "description": True,
+    "summary": True,
     "tags": True,
     "categories": True,
     "date": True,
@@ -131,6 +132,9 @@ def translate_title(
         translated_text = data.get("response", "").strip("")
         print(f"[LOG] Title translation result: {translated_text}")
         return replace_double_with_single_quotes(translated_text)
+    except requests.ConnectionError as e:
+        print("[ERROR] Could not connect to Ollama server. Please ensure the Ollama server is running and accessible.")
+        return "[Error] Ollama server connection issue. Please check the server."
     except requests.RequestException as e:
         print(f"[ERROR] Title translation failed: {e}")
         return f"[Error] {e}"
@@ -149,12 +153,12 @@ def validate_frontmatter(file_path: str) -> bool:
         # Parse frontmatter content
         frontmatter_data = frontmatter.loads(content)
 
-        # Check if all keys have values
+        # Only check keys that are present in the file and set to True in RENDER_KEYS
         for key, value in frontmatter_data.metadata.items():
-            if value is None or value == "":
-                print(f"[Error] Missing value for key: {key}")
-                return False
-
+            if RENDER_KEYS.get(key, False):
+                if value is None or value == "":
+                    print(f"[Warn] Key '{key}' is enabled in RENDER_KEYS but missing or empty in file. Skipping.")
+                    continue  # Skip missing/empty keys instead of failing
         return True
     except Exception as e:
         print(f"[Error] Validation failed: {e}")
@@ -188,6 +192,9 @@ def translate_description(
         translated_text = data.get("response", "").strip("")
         print(f"[LOG] Description translation result: {translated_text}")
         return replace_double_with_single_quotes(translated_text)
+    except requests.ConnectionError as e:
+        print("[ERROR] Could not connect to Ollama server. Please ensure the Ollama server is running and accessible.")
+        return "[Error] Ollama server connection issue. Please check the server."
     except requests.RequestException as e:
         print(f"[ERROR] Description translation failed: {e}")
         return f"[Error] {e}"
@@ -220,6 +227,9 @@ def translate_content(
         translated_text = data.get("response", "").strip("")
         print(f"[LOG] Content translation result: {translated_text[:100]}... (truncated)")
         return translated_text
+    except requests.ConnectionError as e:
+        print("[ERROR] Could not connect to Ollama server. Please ensure the Ollama server is running and accessible.")
+        return "[Error] Ollama server connection issue. Please check the server."
     except requests.RequestException as e:
         print(f"[ERROR] Content translation failed: {e}")
         return f"[Error] {e}"
@@ -307,110 +317,127 @@ def process_markdown(file_path: str, output_path: str = "output.md") -> None:
         logging.error(f"Failed to load markdown file: {e}")
         return
 
-    async def main():
+    async def main(max_retries=5):
         logging.info("Entered async main() for processing.")
-        translated_title = ""
-        if RENDER_KEYS["title"]:
-            original_title = post.get("title")
-            logging.info(f"Original title: {original_title}")
-            if not original_title:
-                logging.error("No title found in frontmatter.")
+        retries = 0
+        while retries <= max_retries:
+            translated_title = ""
+            if RENDER_KEYS["title"]:
+                original_title = post.get("title")
+                logging.info(f"Original title: {original_title}")
+                if not original_title:
+                    logging.error("No title found in frontmatter.")
+                    return
+                logging.info("Translating title...")
+                translated_title = translate_title(original_title, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
+                logging.info(f"Title translated: {translated_title}")
+
+            translated_description = ""
+            if RENDER_KEYS.get("description"):
+                original_description = post.get("description")
+                logging.info(f"Original description: {original_description}")
+                if original_description:
+                    logging.info("Translating description...")
+                    translated_description = translate_description(original_description, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
+                    logging.info(f"Description translated: {translated_description}")
+
+            translated_summary = ""
+            if RENDER_KEYS.get("summary"):
+                original_summary = post.get("summary")
+                logging.info(f"Original summary: {original_summary}")
+                if original_summary:
+                    logging.info("Translating summary...")
+                    translated_summary = translate_description(original_summary, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
+                    logging.info(f"Summary translated: {translated_summary}")
+
+            translated_tags = []
+            if RENDER_KEYS["tags"]:
+                original_tags = post.get("tags", [])
+                logging.info(f"Original tags: {original_tags} (type: {type(original_tags)})")
+                if isinstance(original_tags, str):
+                    original_tags = [tag.strip() for tag in original_tags.split(",") if tag.strip()]
+                if original_tags:
+                    logging.info(f"Translating tags from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
+                    translated_tags = await translate_array_with_googletrans(translator, original_tags, TARGET_LANG)
+                    translated_tags = [transliterate_to_script(tag, TARGET_LANG) for tag in translated_tags]
+                    logging.info(f"Tags translated: {translated_tags}")
+
+            translated_categories = []
+            if RENDER_KEYS["categories"]:
+                original_categories = post.get("categories", [])
+                logging.info(f"Original categories: {original_categories} (type: {type(original_categories)})")
+                if isinstance(original_categories, str):
+                    original_categories = [cat.strip() for cat in original_categories.split(",") if cat.strip()]
+                if original_categories:
+                    logging.info(f"Translating categories from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
+                    translated_categories = await translate_array_with_googletrans(translator, original_categories, TARGET_LANG)
+                    translated_categories = [transliterate_to_script(cat, TARGET_LANG) for cat in translated_categories]
+                    logging.info(f"Categories translated: {translated_categories}")
+
+            date = post.get("date", "")
+            draft = post.get("draft", "")
+
+            translated_author = ""
+            if RENDER_KEYS.get("author"):
+                original_author = post.get("author", "")
+                logging.info(f"Original author: {original_author}")
+                if original_author:
+                    logging.info("Transliterating author...")
+                    translated_author = await translate_author_with_transliteration(translator, original_author, TARGET_LANG)
+                    logging.info(f"Author transliterated: {translated_author}")
+
+            logging.info("Creating new frontmatter...")
+            new_metadata = {
+                "title": f'"{translated_title}"' if RENDER_KEYS["title"] else None,
+                "description": f'"{translated_description}"' if RENDER_KEYS.get("description") else None,
+                "summary": f'"{translated_summary}"' if RENDER_KEYS.get("summary") else None,
+                "tags": translated_tags if RENDER_KEYS["tags"] else None,
+                "categories": translated_categories if RENDER_KEYS["categories"] else None,
+                "date": date if RENDER_KEYS["date"] else None,
+                "draft": draft if RENDER_KEYS["draft"] else None,
+                "author": f'"{translated_author}"' if RENDER_KEYS.get("author") and translated_author else None
+            }
+            logging.info(f"New metadata for frontmatter: {new_metadata}")
+            new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
+            new_frontmatter = clean_frontmatter_value(new_frontmatter)
+            logging.info(f"New frontmatter generated:\n{new_frontmatter}")
+
+            try:
+                with open(output_path, "w", encoding="utf-8") as f:
+                    logging.info(f"Writing frontmatter to {output_path}")
+                    f.write(new_frontmatter)
+                    ai_message_en = AI_NOTIFICATION_MSG.format(
+                        source_lang=LANGUAGE_NAMES[SOURCE_LANG],
+                        target_lang=LANGUAGE_NAMES[TARGET_LANG]
+                    )
+                    logging.info(f"Translating AI notification message: {ai_message_en}")
+                    ai_message_translated = translate_content(ai_message_en, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
+                    ai_message_translated = clean_special_quotes(ai_message_translated)
+                    logging.info(f"Writing AI notification message: {ai_message_translated}")
+                    f.write(f"\n{ai_message_translated}\n")
+                    markdown_content = post.content
+                    logging.info(f"Translating markdown content (first 100 chars): {markdown_content[:100]}... (truncated)")
+                    translated_markdown = translate_content(markdown_content, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
+                    translated_markdown = clean_special_quotes(translated_markdown)
+                    logging.info(f"Writing translated markdown content (first 100 chars): {translated_markdown[:100]}... (truncated)")
+                    f.write(f"\n{translated_markdown}\n")
+                logging.info(f"Successfully wrote translated content to: {output_path}")
+            except Exception as e:
+                logging.error(f"Failed to write output file: {e}")
                 return
-            logging.info("Translating title...")
-            translated_title = translate_title(original_title, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
-            logging.info(f"Title translated: {translated_title}")
 
-        translated_description = ""
-        if RENDER_KEYS["description"]:
-            original_description = post.get("description")
-            logging.info(f"Original description: {original_description}")
-            if original_description:
-                logging.info("Translating description...")
-                translated_description = translate_description(original_description, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
-                logging.info(f"Description translated: {translated_description}")
-
-        translated_tags = []
-        if RENDER_KEYS["tags"]:
-            original_tags = post.get("tags", [])
-            logging.info(f"Original tags: {original_tags} (type: {type(original_tags)})")
-            if isinstance(original_tags, str):
-                original_tags = [tag.strip() for tag in original_tags.split(",") if tag.strip()]
-            if original_tags:
-                logging.info(f"Translating tags from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
-                translated_tags = await translate_array_with_googletrans(translator, original_tags, TARGET_LANG)
-                translated_tags = [transliterate_to_script(tag, TARGET_LANG) for tag in translated_tags]
-                logging.info(f"Tags translated: {translated_tags}")
-
-        translated_categories = []
-        if RENDER_KEYS["categories"]:
-            original_categories = post.get("categories", [])
-            logging.info(f"Original categories: {original_categories} (type: {type(original_categories)})")
-            if isinstance(original_categories, str):
-                original_categories = [cat.strip() for cat in original_categories.split(",") if cat.strip()]
-            if original_categories:
-                logging.info(f"Translating categories from {LANGUAGE_NAMES[SOURCE_LANG]} ({SOURCE_LANG}) to {LANGUAGE_NAMES[TARGET_LANG]} ({TARGET_LANG})...")
-                translated_categories = await translate_array_with_googletrans(translator, original_categories, TARGET_LANG)
-                translated_categories = [transliterate_to_script(cat, TARGET_LANG) for cat in translated_categories]
-                logging.info(f"Categories translated: {translated_categories}")
-
-        date = post.get("date", "")
-        draft = post.get("draft", "")
-
-        translated_author = ""
-        if RENDER_KEYS.get("author"):
-            original_author = post.get("author", "")
-            logging.info(f"Original author: {original_author}")
-            if original_author:
-                logging.info("Transliterating author...")
-                translated_author = await translate_author_with_transliteration(translator, original_author, TARGET_LANG)
-                logging.info(f"Author transliterated: {translated_author}")
-
-        logging.info("Creating new frontmatter...")
-        new_metadata = {
-            "title": f'"{translated_title}"' if RENDER_KEYS["title"] else None,
-            "description": f'"{translated_description}"' if RENDER_KEYS["description"] else None,
-            "tags": translated_tags if RENDER_KEYS["tags"] else None,
-            "categories": translated_categories if RENDER_KEYS["categories"] else None,
-            "date": date if RENDER_KEYS["date"] else None,
-            "draft": draft if RENDER_KEYS["draft"] else None,
-            "author": f'"{translated_author}"' if RENDER_KEYS.get("author") and translated_author else None
-        }
-        logging.info(f"New metadata for frontmatter: {new_metadata}")
-        new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
-        new_frontmatter = clean_frontmatter_value(new_frontmatter)
-        logging.info(f"New frontmatter generated:\n{new_frontmatter}")
-
-        try:
-            with open(output_path, "w", encoding="utf-8") as f:
-                logging.info(f"Writing frontmatter to {output_path}")
-                f.write(new_frontmatter)
-                ai_message_en = AI_NOTIFICATION_MSG.format(
-                    source_lang=LANGUAGE_NAMES[SOURCE_LANG],
-                    target_lang=LANGUAGE_NAMES[TARGET_LANG]
-                )
-                logging.info(f"Translating AI notification message: {ai_message_en}")
-                ai_message_translated = translate_content(ai_message_en, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
-                ai_message_translated = clean_special_quotes(ai_message_translated)
-                logging.info(f"Writing AI notification message: {ai_message_translated}")
-                f.write(f"\n{ai_message_translated}\n")
-                markdown_content = post.content
-                logging.info(f"Translating markdown content (first 100 chars): {markdown_content[:100]}... (truncated)")
-                translated_markdown = translate_content(markdown_content, SOURCE_LANG, TARGET_LANG, TRANSLATION_MODEL)
-                translated_markdown = clean_special_quotes(translated_markdown)
-                logging.info(f"Writing translated markdown content (first 100 chars): {translated_markdown[:100]}... (truncated)")
-                f.write(f"\n{translated_markdown}\n")
-            logging.info(f"Successfully wrote translated content to: {output_path}")
-        except Exception as e:
-            logging.error(f"Failed to write output file: {e}")
-            return
-
-        logging.info("Validating frontmatter...")
-        if not validate_frontmatter(output_path):
-            logging.error("Invalid frontmatter. Deleting output file and retrying.")
-            os.remove(output_path)
-            await main()
-        else:
-            logging.info("Frontmatter validation successful.")
+            logging.info("Validating frontmatter...")
+            if not validate_frontmatter(output_path):
+                logging.error(f"Invalid frontmatter. Deleting output file. Retry {retries+1}/{max_retries}.")
+                os.remove(output_path)
+                retries += 1
+                if retries > max_retries:
+                    print(f"[FATAL] Frontmatter validation failed after {max_retries} retries. Exiting.")
+                    exit(2)
+                continue
+            else:
+                logging.info("Frontmatter validation successful.")
+                break
 
     asyncio.run(main())
 
