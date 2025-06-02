@@ -13,7 +13,7 @@ TARGET_LANG = "fr"  # Hindi
 
 # Translation model and API settings
 TRANSLATION_MODEL = "llama3.2:3b"
-TRANSLATION_API_URL = "http://localhost:11434/api/generate"
+TRANSLATION_API_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434/api/generate")
 
 # Update prompts to include full language names with codes
 TITLE_TRANSLATION_PROMPT = (
