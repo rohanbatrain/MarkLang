@@ -54,7 +54,8 @@ RENDER_KEYS = {
     "categories": True,
     "date": True,
     "draft": True,
-    "author": True, 
+    "author": True,
+    "pinned": True,
 }
 
 # Initialize the Google Translator
@@ -386,6 +387,8 @@ def process_markdown(file_path: str, output_path: str = "output.md") -> None:
                     translated_author = await translate_author_with_transliteration(translator, original_author, TARGET_LANG)
                     logging.info(f"Author transliterated: {translated_author}")
 
+            pinned = post.get("pinned", None)
+
             logging.info("Creating new frontmatter...")
             new_metadata = {
                 "title": f'"{translated_title}"' if RENDER_KEYS["title"] else None,
@@ -395,7 +398,8 @@ def process_markdown(file_path: str, output_path: str = "output.md") -> None:
                 "categories": translated_categories if RENDER_KEYS["categories"] else None,
                 "date": date if RENDER_KEYS["date"] else None,
                 "draft": draft if RENDER_KEYS["draft"] else None,
-                "author": f'"{translated_author}"' if RENDER_KEYS.get("author") and translated_author else None
+                "author": f'"{translated_author}"' if RENDER_KEYS.get("author") and translated_author else None,
+                "pinned": pinned if RENDER_KEYS.get("pinned") and pinned is not None else None
             }
             logging.info(f"New metadata for frontmatter: {new_metadata}")
             new_frontmatter = "---\n" + "\n".join(f"{key}: {value}" for key, value in new_metadata.items() if value or isinstance(value, bool)) + "\n---\n"
