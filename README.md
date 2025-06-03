@@ -3,7 +3,7 @@
 ![2](https://github.com/user-attachments/assets/50f79810-815f-4263-a4e0-a41f0b8017d5)
 
 
-MarkLang is a robust, production-ready CLI tool for translating Markdown blog posts (including frontmatter, tags, and categories) from one language to another. It supports custom per-language dictionaries, Google Translate, and offline transliteration for technical terms and proper nouns.
+MarkLang is a robust, production-ready CLI tool for translating Hugo Markdown blog posts (including frontmatter, tags, and categories) from one language to another. It supports custom per-language dictionaries, Google Translate, and offline transliteration for technical terms and proper nouns.
 
 ## Features
 - **CLI-based**: Translate files with a single command.
